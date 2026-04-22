@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:"Funnel Display", Arial;
+background:#fafafa;
+overflow-x:hidden;
+}
+
+.grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+padding:60px 20px;
+}
+
+.card{
+background:white;
+padding:55px 40px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:all .35s ease;
+text-align:center;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+min-height:340px;
+}
+
+.icon img{
+width:64px;
+height:64px;
+margin-bottom:25px;
+}
+
+.title{
+font-weight:700;
+color:#ff6a00;
+margin-bottom:15px;
+font-size:26px;
+}
+
+.text{
+color:#444;
+font-size:15px;
+line-height:1.6;
+max-width:420px;
+margin:auto;
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+background:black;
+color:white;
+padding:12px 26px;
+border-radius:6px;
+font-size:14px;
+font-weight:600;
+text-decoration:none;
+transition:.25s;
+}
+
+.btn:hover{
+opacity:.85;
+}
+
+.card:hover{
+background:#ff6a00;
+transform:translateY(-8px);
+}
+
+.card:hover .title,
+.card:hover .text{
+color:white;
+}
+
+.card:hover .icon img{
+filter:brightness(0) invert(1);
+}
+
+.card:hover .btn{
+background:white;
+color:black;
+}
+
+@media (max-width:650px){
+
+.grid{
+padding:40px 20px;
+gap:20px;
+}
+
+.card{
+padding:40px 28px;
+min-height:auto;
+}
+
+.title{
+font-size:22px;
+}
+
+.text{
+font-size:14px;
+}
+
+.icon img{
+width:54px;
+height:54px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="grid">
+
+<div class="card">
+
+<div>
+
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_2a9b0a0d336244aa84f93ce4657608c5.svg">
+</div>
+
+<div class="title">
+Quero reformar minha casa
+</div>
+
+<div class="text">
+Planeje sua reforma com orçamento claro, cronograma definido e acompanhamento profissional.
+</div>
+
+</div>
+
+<a class="btn"
+href="https://api.whatsapp.com/send?phone=5511945678593"
+target="_blank"
+rel="noopener">
+Solicitar orçamento
+</a>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_f2f6717fadb84d4b8a7060ec1e020ee2.svg">
+</div>
+
+<div class="title">
+Sou pedreiro
+</div>
+
+<div class="text">
+Participe de projetos que geram trabalho, renda e transformação nas comunidades.
+</div>
+
+</div>
+
+<a class="btn" href="https://comuta.com.br/c%C3%B3pia-instituto-comuta#vagas">
+Quero participar
+</a>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_b9d980b9cae541e5ab75666e207e4cc5.svg">
+</div>
+
+<div class="title">
+Sou empresa
+</div>
+
+<div class="text">
+Desenvolva projetos de impacto social com reformas, voluntariado e melhoria na casa de colaboradores.
+</div>
+
+</div>
+
+<a class="btn"
+href="https://api.whatsapp.com/send?phone=5511945678593"
+target="_blank"
+rel="noopener">
+Falar com a Comuta
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

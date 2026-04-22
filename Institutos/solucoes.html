@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comuta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/style.css">
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display", Arial;
+}
+
+.grid{
+max-width:900px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px 30px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transition:all 0.35s ease;
+cursor:pointer;
+}
+
+.icon img{
+width:48px;
+height: 48px;
+margin-bottom:15px;
+filter: brightness(0) saturate(100%) invert(16%) sepia(94%) saturate(1700%) hue-rotate(210deg) brightness(95%) contrast(95%);
+}
+
+.title{
+font-weight:700;
+color:#072E7A;
+margin-bottom:10px;
+font-size:30px;
+}
+
+.text{
+color:#333;
+font: size 20px;
+line-height:1.5;
+text-align: justify;
+
+}
+
+.card:hover{
+background:#072E7A;
+transform:translateY(-6px);
+}
+
+.card:hover .title{
+color:white;
+}
+
+.card:hover .text{
+color:white;
+}
+
+.card:hover .icon img{
+filter:brightness(0) invert(1);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px 15px;
+  }
+
+  .card {
+    padding: 24px 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .text {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .icon img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px 12px;
+  }
+
+  .card {
+    padding: 16px 14px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .text {
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .icon img {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/e39337_e073dbd99b904517a2a3ffcb0d92cd90.svg">
+</div>
+<div class="title">Diagnóstico</div>
+<div class="text">Realizamos diagnósticos completos para identificar as necessidades habitacionais de forma estratégica. No território, avaliamos as condições gerais da comunidade para entender suas maiores demandas. Nas empresas, mapeamos se há funcionários vivendo em situação de vulnerabilidade habitacional, permitindo criar soluções direcionadas e de alto impacto.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/e39337_4dc87a4d513e4643b7dccfe1cdd9e2fd.svg">
+</div>
+<div class="title">Voluntario Corporativo</div>
+<div class="text">Engajamos colaboradores de empresas em ações práticas de melhoria habitacional. O voluntariado corporativo une propósito e impacto, transformando lares e fortalecendo laços entre a empresa, seus colaboradores e a comunidade.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/e39337_22c2e9b918f4498094418c02adb2cbd3.svg">
+</div>
+<div class="title">Reforma para Funcionários</div>
+<div class="text">Oferecemos reformas completas para funcionários de empresas parceiras, levando mais conforto, segurança e qualidade de vida para suas famílias, com gestão profissional do início ao fim.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/e39337_c61bf41d110943d0aa89ff2b7f9f8ff7.svg">
+</div>
+<div class="title">Adaptação Climáticas</div>
+<div class="text">Equipes especializadas em reformas na periferia.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/e39337_5c0ed0fd4d5e49c2b2d185063c522e64.svg">
+</div>
+<div class="title">Reformas em Territórios de interesse</div>
+<div class="text">​Executamos reformas estratégicas em comunidades de interesse das empresas, fortalecendo o vínculo com o território e gerando impacto social positivo direto na região.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/e39337_b746cabdc7fb4b5887ae522fa44db1b5.svg">
+</div>
+<div class="title">Palestras</div>
+<div class="text">Levamos conhecimento e inspiração para empresas, instituições e comunidades, compartilhando nossa experiência em habitação social, impacto comunitário e soluções inovadoras para melhoria de moradias.</div>
+</div>
+
+</div>
+
+</body>
+</html>

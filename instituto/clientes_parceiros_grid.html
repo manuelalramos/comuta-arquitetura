@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<style>
+
+html, body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.body{
+  font-family:  "Funnel Display", sans-serif;;
+}
+
+  .section {
+    padding: 2rem 1.5rem;
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    gap: 3rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .header h2 {
+    font-family:  "Funnel Display", sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    font-size: 2.1rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .divider {
+    width: 1px;
+    height: 48px;
+    flex-shrink: 0;
+    background-color: #fff;
+    margin-left: 10px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4,132px);
+    gap: 12px;
+  }
+
+  .logo-card {
+    aspect-ratio: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    transition: transform 0.28s ease-out;
+  }
+
+  .logo-card:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .logo-card img {
+    max-width: 80%;
+    max-height: 60%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .grid .logo-card:last-child img {
+    filter: grayscale(1) brightness(1.05) contrast(0.82);
+  }
+
+  @media (max-width: 520px) {
+    .section {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem 0.75rem;
+    }
+
+    .header {
+      gap: 0;
+      margin-bottom: 0;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .divider {
+      display: none;
+    }
+
+    .header h2 {
+      font-size: 26px;
+      line-height: 1.1;
+      text-align: left;
+      margin: 0;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 132px);
+    }
+  }
+
+</style>
+
+<div class="section">
+  <div class="header">
+    <h2>Clientes e<br>Parceiros</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="grid">
+    <a class="logo-card" href="https://www.gerandofalcoes.com/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_26b9f9919b324d1fb0492c0608b0dc8c~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://habitatbrasil.org.br/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_b784a1ff7354476a8ef5d0b1e117b121~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://galli.inc/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_d12bfbca78204ef99bdb6709c0a16739~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://www.viscofan.com/pt-br/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_385de5d3117041a8b6aa742235127e2f~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://institutocyrela.org.br/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_afa7454374314033b6d32a86d51e8460~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://www.votorantimcimentos.com.br/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_743d726e392e4d879b0e3c11511538d9~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://www.leroymerlin.com.br/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_575befb65172424a86a8bbf07c531171~mv2.png" alt="">
+      </div>
+    </a>
+
+    <a class="logo-card" href="https://www.votorantimcimentos.com.br/rede-transformar/" target="_top">
+      <div style="text-align:center">
+        <img src="https://static.wixstatic.com/media/e39337_78a4c0ab13e649f29d33a1e2bc838e2b~mv2.png" alt="">
+      </div>
+    </a>
+  </div>
+</div>
+</body>
+</html>

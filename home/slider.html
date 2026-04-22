@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+#slider{
+position:relative;
+width:100%;
+overflow:hidden;
+}
+
+#slider .slides{
+display:flex;
+transition:transform .5s ease;
+}
+
+#slider .slide{
+min-width:100%;
+}
+
+#slider img{
+width:100%;
+height:auto;
+display:block;
+}
+
+#slider button{
+position:absolute;
+top:50%;
+width:25px;
+height:25px;
+background:none;
+border:none;
+cursor:pointer;
+z-index:10;
+}
+
+#slider .next{
+right:15px;
+transform:translateY(-50%) rotate(-45deg);
+border-right:4px solid white;
+border-bottom:4px solid white;
+}
+
+#slider .prev{
+left:15px;
+transform:translateY(-50%) rotate(135deg);
+border-right:4px solid white;
+border-bottom:4px solid white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="slider">
+
+<div class="slides">
+
+<a href="https://api.whatsapp.com/send?phone=5511945678593" target="_blank" class="slide">
+<img src="https://static.wixstatic.com/media/9459e7_b6b75d8f23e843bb965a90154b19f97c~mv2.jpg">
+</a>
+
+<a href="#secao2 " class="slide">
+<img src="https://static.wixstatic.com/media/9459e7_72c14ab3abcc4714afba44f485136243~mv2.jpg">
+</a>
+
+<a href="#secao3" class="slide">
+<img src="https://static.wixstatic.com/media/9459e7_925de09eca0045ab83e18ad8d351c8ad~mv2.jpg">
+</a>
+
+</div>
+
+<button class="prev"></button>
+<button class="next"></button>
+
+</div>
+
+<script>
+
+window.addEventListener("load", ()=>{
+
+let index = 0
+
+const slides = document.querySelector("#slider .slides")
+const slideItems = document.querySelectorAll("#slider .slide")
+const total = slideItems.length
+
+const next = document.querySelector("#slider .next")
+const prev = document.querySelector("#slider .prev")
+
+function updateSlider(){
+slides.style.transform = `translateX(-${index * 100}%)`
+}
+
+next.addEventListener("click", ()=>{
+index = (index + 1) % total
+updateSlider()
+})
+
+prev.addEventListener("click", ()=>{
+index = (index - 1 + total) % total
+updateSlider()
+})
+
+setInterval(()=>{
+index = (index + 1) % total
+updateSlider()
+}, 4000)
+
+})
+
+</script>
+
+</body>
+</html>

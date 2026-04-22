@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<title>Vagas</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Funnel Display', sans-serif;
+}
+
+.jobs-section {
+    padding: 100px 20px;
+}
+
+.jobs-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.jobs-container h2 {
+    font-size: 34px;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.job-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
+}
+
+.job-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.job-card h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.job-btn {
+    background: #ff7a00;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.job-btn:hover {
+    background: #222;
+}
+
+.no-jobs {
+    display: none;
+    text-align: center;
+}
+
+.no-jobs h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.no-jobs p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.talent-box {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.talent-box p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.btn-primary {
+    background: #ff7a00;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    border: 2px solid #ff7a00;
+    color: #ff7a00;
+    padding: 12px 26px;
+    border-radius: 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #ff7a00;
+    color: white;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="jobs-section">
+    <div class="jobs-container">
+
+        <h2>Vagas abertas</h2>
+
+        <div class="jobs-grid" id="jobsGrid">
+        </div>
+
+        <div class="no-jobs" id="noJobs">
+            <h3>No momento não temos vagas abertas</h3>
+            <p>Mas você pode se cadastrar no nosso banco de talentos</p>
+
+            <a href="#" class="btn-primary">
+                Entrar no banco de talentos
+            </a>
+        </div>
+
+        <div class="talent-box" id="talentBox">
+            <p>Não encontrou uma vaga ideal?</p>
+            <a href="#" class="btn-secondary">
+                Cadastrar no banco de talentos
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+const jobsGrid = document.getElementById('jobsGrid');
+const noJobs = document.getElementById('noJobs');
+const talentBox = document.getElementById('talentBox');
+
+if (jobsGrid.children.length === 0) {
+    jobsGrid.style.display = 'none';
+    noJobs.style.display = 'block';
+    talentBox.style.display = 'none';
+}
+</script>
+
+</body>
+</html>

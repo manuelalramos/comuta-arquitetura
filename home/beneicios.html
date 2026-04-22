@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comuta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/style.css">
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display", Arial;
+background:white;
+}
+
+.grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:35px 25px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transition:all 0.35s ease;
+cursor:pointer;
+}
+
+.icon img{
+width:48px;
+height: 48px;
+margin-bottom:15px;
+}
+
+.title{
+font-weight:700;
+color:#ff6a00;
+margin-bottom:10px;
+font-size:18px;
+}
+
+.text{
+color:#333;
+font-size:14px;
+line-height:1.5;
+}
+
+.card:hover{
+background:#ff6a00;
+transform:translateY(-6px);
+}
+
+.card:hover .title{
+color:white;
+}
+
+.card:hover .text{
+color:white;
+}
+
+.card:hover .icon img{
+filter:brightness(0) invert(1);
+}
+
+@media (max-width:900px){
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:600px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_d71824311125495093d44107a9b8ebb7.svg">
+</div>
+<div class="title">Orçamento</div>
+<div class="text">O valor da reforma não muda durante a obra.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_90c32cd0275e4f2d823cf6fd357b4fc5.svg">
+</div>
+<div class="title">Acompanhameto</div>
+<div class="text">Gestão da refroma por arquitetos.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_6352a3d9a9994960aaa2d61888cb9d10.svg">
+</div>
+<div class="title">Cronograma</div>
+<div class="text">Reforma entrege dentro do prazo determinado.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_75d7748bad8f43018a8d48397acabadc.svg">
+</div>
+<div class="title">Mão de Obra</div>
+<div class="text">Equipes especializadas em reformas na periferia.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_f6b171bd39854f86bf69724fcbd24ea1.svg">
+</div>
+<div class="title">Material</div>
+<div class="text">Diversos depósitos parceiros.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_cf8f0a3b8d094aff9dc20cd07fe14e14.svg">
+</div>
+<div class="title">Pagamento</div>
+<div class="text">Temos diversas formas de viabilizar sua reforma.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_d8aaefb7668b4dcda6ca163404cf806e.svg">
+</div>
+<div class="title">Remoção de Entulho</div>
+<div class="text">Remoção de todo entulho gerado durante a obra.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_a284dc2d7a8b44aeb9efed4ed1a3cde6.svg">
+</div>
+<div class="title">Garantia</div>
+<div class="text">Todo serviço feito tem garantia de pelo menos 3 meses.</div>
+</div>
+
+<div class="card">
+<div class="icon">
+<img src="https://static.wixstatic.com/shapes/9459e7_1bc2c3f5a33f47308d9116f7186047d9.svg">
+</div>
+<div class="title">Contrato</div>
+<div class="text">Tudo assegurado por contrato.</div>
+</div>
+
+</div>
+
+</body>
+</html>

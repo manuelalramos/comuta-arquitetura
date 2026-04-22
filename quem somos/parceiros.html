@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display", Arial;
+}
+
+.parceiros{
+max-width:917px;
+margin:80px auto;
+position:relative;
+text-align:center;
+background-color: white;
+}
+
+.parceiros h2{
+margin-bottom:40px;
+}
+
+.carousel{
+overflow:hidden;
+position:relative;
+}
+
+.track{
+display:flex;
+gap:60px;
+transition:transform .5s ease;
+}
+
+.item{
+flex:0 0 auto;
+width:140px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.item img{
+max-width:100%;
+max-height:80px;
+filter:grayscale(100%);
+opacity:.7;
+transition:.3s ease;
+}
+
+.item:hover img{
+filter:grayscale(0%);
+opacity:1;
+transform:scale(1.1);
+}
+
+.item:active img{
+filter:grayscale(0%);
+opacity:1;
+transform:scale(1.05);
+}
+
+.arrow{
+position:absolute;
+top:80%;
+transform:translateY(-50%);
+width:40px;
+height:40px;
+border-radius:50%;
+border:none;
+background:white;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+font-size:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:2;
+}
+
+.left{ left:-20px; }
+.right{ right:-20px; }
+
+@media(max-width:600px){
+
+.track{
+display:grid;
+grid-template-columns: repeat(2, 1fr);
+gap:20px;
+transform:none !important;
+}
+
+.item{
+width:100%;
+}
+
+.item img{
+max-height:80px;
+}
+
+.arrow{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="parceiros">
+
+<button class="arrow left" onclick="move(-1)">‹</button>
+
+<div class="carousel">
+<div class="track" id="track">
+
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_4c6836fc470947189f6e624a60fad7ea~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_fc0f487225cd486e93375c5dc9c1e078~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_834d180376e2448aa6142de3b0630bb4~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_57404313590445d8b4fc12fb33401320~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_f853a07f426f4e9caf0bdbffbdd8c827~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_a4132c0f0bd5460d8de6d5454af2d94f~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_1b8b2b61d1cd41b59a820df64eea50d1~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_96bb07b9246542eb8d0604e55e5da62a~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_fae791f6329a4ea396158bc373f808a6~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_8a71a7e30cf04b39842bbd8dc6cc0c3d~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_354130936e60487aae3536dc62c9e58e~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_048abe5f13784f059c9a55886081bf0c~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_ccdae3098ea44af2aedd3c31f53d94cf~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_053ec9372b9b46ef9d82aa80550a8c71~mv2.png"></div>
+<div class="item"><img src="https://static.wixstatic.com/media/9459e7_735ee587ab754b55899e4ecfc5e59bc0~mv2.png"></div>
+
+</div>
+</div>
+
+<button class="arrow right" onclick="move(1)">›</button>
+
+</div>
+
+<script>
+
+let index = 0
+const track = document.getElementById("track")
+const items = document.querySelectorAll(".item")
+
+const total = items.length
+const half = total / 2
+
+function getGap(){
+return window.innerWidth <= 600 ? 20 : 60
+}
+
+function getItemsPerView(){
+return window.innerWidth <= 600 ? 2 : 1
+}
+
+function move(direction){
+
+const itemsPerView = getItemsPerView()
+const itemWidth = items[0].getBoundingClientRect().width + getGap()
+
+index += direction * itemsPerView
+
+track.style.transition = ".5s ease"
+track.style.transform = `translateX(-${index * itemWidth}px)`
+
+if(index >= half){
+setTimeout(()=>{
+track.style.transition = "none"
+index = 0
+track.style.transform = `translateX(0px)`
+},500)
+}
+
+if(index < 0){
+setTimeout(()=>{
+track.style.transition = "none"
+index = half - itemsPerView
+track.style.transform = `translateX(-${index * itemWidth}px)`
+},0)
+}
+
+}
+
+window.addEventListener("resize", () => {
+index = 0
+track.style.transition = "none"
+track.style.transform = "translateX(0)"
+})
+
+</script>
+
+</body>
+</html>

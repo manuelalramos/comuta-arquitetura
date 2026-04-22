@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display",sans-serif;
+}
+
+.footer{
+background:#FF6103;
+color:#fff;
+padding:70px 8% 30px 8%;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1.5fr;
+gap:40px;
+max-width:1200px;
+margin:auto;
+}
+
+.footer-about p{
+font-size:14px;
+line-height:1.6;
+color:#ffffff;
+}
+
+.footer h3{
+font-size:16px;
+margin-bottom:15px;
+}
+
+.footer a{
+display:block;
+color:#ffffff;
+text-decoration:none;
+margin-bottom:10px;
+font-size:14px;
+transition:.3s;
+}
+
+.footer a:hover{
+color:white;
+transform:translateX(4px);
+}
+
+.whatsapp-btn{
+display:inline-block;
+margin-top:10px;
+padding:12px 18px;
+background:#25D366;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-size:14px;
+transition:.3s;
+}
+
+.whatsapp-btn:hover{
+transform:translateY(-2px);
+}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,0.1);
+margin-top:40px;
+padding-top:20px;
+display:flex;
+justify-content:space-between;
+font-size:13px;
+color:#ffffff;
+flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+
+.footer-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.footer-grid{
+grid-template-columns:1fr;
+}
+
+.footer{
+padding:60px 30px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<footer class="footer">
+
+<div class="footer-grid">
+
+<div class="footer-about">
+<h3>Comuta</h3>
+<p>
+Negócio de impacto social que combate o déficit habitacional por meio de reformas completas em comunidades e periferias. Já impactamos milhares de pessoas com moradias mais seguras e dignas.
+</p>
+</div>
+
+<div>
+<h3>Institucional</h3>
+<a href="https://www.comuta.com.br/" target="_top">Início</a>
+<a href="https://www.comuta.com.br/about-1" target="_top">Quem somos</a>
+<a href="https://www.comuta.com.br/projects-6" target="_top">Soluções</a>
+<a href="https://www.comuta.com.br/s-projects-basic" target="_top">Mídia</a>
+</div>
+
+<div>
+<h3>Serviços</h3>
+<a href="#">Reformas completas</a>
+<a href="#">Diagnóstico habitacional</a>
+<a href="#">Projetos para empresas</a>
+<a href="#">Voluntariado corporativo</a>
+</div>
+
+<div>
+<h3>Contato</h3>
+
+<a href="https://maps.app.goo.gl/TCc5Df8VxwJ3PCGQA" target="_blank" rel="noopener"><p style="font-size:14px;color:#ffffff;">
+Rua Zike Tuma, 760<br>
+Jardim Ubirajara<br>
+São Paulo - SP
+</p></a>
+
+ <p>
+    ATENDIMENTO AO CLIENTE : (11) 94567-8593 (segunda a sexta das 9 as 18 horas)
+ </p>
+<a href="https://api.whatsapp.com/send?phone=5511945678593"
+class="whatsapp-btn"
+target="_blank" rel="noopener">
+Falar no WhatsApp
+</a>
+
+<p style="font-size:14px;color:#ffffff;margin-top:15px;">
+contato@comuta.com.br
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<div>
+© 2025 Comuta – Todos os direitos reservados
+</div>
+
+<div>
+Desenvolvido para transformação social
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>

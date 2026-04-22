@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Funnel Display', Arial, sans-serif;
+}
+
+body{
+overflow: hidden
+}
+
+.section-cards{
+display:flex;
+width:100%;
+height:260px;
+overflow:hidden;
+}
+
+.card{
+flex:1;
+position:relative;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:40px;
+text-decoration:none;
+transition:all .4s ease;
+overflow:hidden;
+}
+
+.card:hover{
+flex:1.2;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+transition:.4s;
+}
+
+.card:hover::before{
+background:rgba(0,0,0,0.55);
+}
+
+.card-content{
+position:relative;
+z-index:2;
+max-width:250px;
+}
+
+.card h3{
+font-size:16px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:13px;
+opacity:.9;
+margin-bottom:20px;
+}
+
+.arrow{
+font-size:22px;
+transition:.3s;
+}
+
+.card:hover .arrow{
+transform:translateX(10px);
+}
+
+.card1{background:#0d3a83;}
+.card2{background:#0a78c2;}
+.card3{background:#9aa0a6;}
+.card4{background:#79add3;}
+
+@media(max-width:768px){
+
+.section-cards{
+flex-direction:column;
+height:auto;
+}
+
+.card{
+height:140px;
+}
+
+.card:hover{
+flex:1;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="section-cards">
+
+<a href="https://www.institutocomuta.org.br/quem-somos" class="card card1" target="_top">
+
+<div class="card-content">
+<h3>QUEM SOMOS</h3>
+<p>Transformamos moradias em comunidades vulneráveis, promovendo dignidade, saúde e segurança.</p>
+<div class="arrow">→</div>
+</div>
+</a>
+
+<a href="https://www.institutocomuta.org.br/solu%C3%A7%C3%B5es" class="card card2" target="_top">
+<div class="card-content">
+<h3>NOSSAS SOLUÇÕES</h3>
+<p>Levamos reformas e melhorias habitacionais com impacto social e qualidade técnica</p>
+<div class="arrow">→</div>
+</div>
+</a>
+
+<a href="https://www.institutocomuta.org.br/contato" class="card card4" target="_top">
+<div class="card-content">
+<h3>CONTATO</h3>
+<p>Conecte-se com a gente e faça parte da transformação de vidas através da moradia.</p>
+<div class="arrow">→</div>
+</div>
+</a>
+
+</div>
+
+</body>
+</html>

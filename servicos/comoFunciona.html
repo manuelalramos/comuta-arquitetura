@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<title>Como funciona</title>
+
+<style>
+body {
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Funnel Display', sans-serif;
+}
+
+.section {
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 60px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: #eee;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 3px;
+    height: 0;
+    background: #ff7a00;
+}
+
+.timeline.active .timeline-line {
+    animation: growLine 2s ease forwards;
+}
+
+@keyframes growLine {
+    from { height: 0; }
+    to { height: 100%; }
+}
+
+.step {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 30px;
+
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.step::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #ff7a00;
+    border-radius: 50%;
+}
+
+.step.show {
+    animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.cta a {
+    display: inline-block;
+    background: #ff7a00;
+    color: white;
+    padding: 16px 34px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cta a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+
+        <h2>Simples, organizado e transparente</h2>
+
+        <div class="timeline">
+            <div class="timeline-line"></div>
+
+            <div class="step">
+                <h3>1. Contato inicial</h3>
+                <p>Você entra em contato e nos conta sobre sua casa.</p>
+            </div>
+
+            <div class="step">
+                <h3>2. Avaliação</h3>
+                <p>Analisamos a necessidade e viabilidade.</p>
+            </div>
+
+            <div class="step">
+                <h3>3. Orçamento</h3>
+                <p>Apresentamos uma proposta clara e organizada.</p>
+            </div>
+
+            <div class="step">
+                <h3>4. Execução</h3>
+                <p>Realizamos a obra com acompanhamento técnico.</p>
+            </div>
+
+            <div class="step">
+                <h3>5. Entrega</h3>
+                <p>Finalizamos com qualidade e organização.</p>
+            </div>
+
+        </div>
+
+        <div class="cta">
+            <a href="https://api.whatsapp.com/send?phone=5511945678593"
+            target="_blank"
+            rel="noopener"
+            >Começar meu atendimento</a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+const timeline = document.querySelector('.timeline');
+const steps = document.querySelectorAll('.step');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+            timeline.classList.add('active');
+
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add('show');
+                }, index * 400);
+            });
+
+            observer.disconnect();
+        }
+    });
+}, {
+    threshold: 0.3
+});
+
+observer.observe(timeline);
+</script>
+
+</body>
+</html>

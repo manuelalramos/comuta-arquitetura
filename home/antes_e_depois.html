@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comuta</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display", Arial;
+}
+
+.container{
+width:100%;
+max-width:1000px;
+margin:auto;
+position:relative;
+overflow:hidden;
+}
+
+.track{
+display:flex;
+transition:transform 0.5s ease;
+}
+
+.card{
+min-width:33.33%;
+padding:10px;
+box-sizing:border-box;
+}
+
+.imageBox{
+position:relative;
+overflow:hidden;
+border-radius:12px;
+}
+
+.imageBox img{
+width:100%;
+display:block;
+}
+
+.after{
+position:absolute;
+top:0;
+left:0;
+opacity:0;
+transition:opacity 1s ease;
+}
+
+.imageBox:hover .after{
+opacity:1;
+}
+
+.label{
+position:absolute;
+padding:6px 12px;
+border-radius:6px;
+font-size:13px;
+transition:0.3s;
+background:rgba(0,0,0,0.2);
+color:#fff;
+}
+
+.before{
+top:10px;
+left:10px;
+}
+
+.afterLabel{
+bottom:10px;
+right:10px;
+}
+
+.label.active{
+letter-spacing: 0.5px;
+font-weight:700;
+background:#fff;
+color:#ff6a00;
+animation:pulse .4s ease;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+@keyframes pulse{
+0%{
+transform:scale(0.8);
+opacity:0.5;
+}
+100%{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(4px);
+border-radius:50%;
+width:38px;
+height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.25);
+font-size:18px;
+transition:0.2s;
+}
+
+.arrow:hover{
+transform:translateY(-50%) scale(1.1);
+}
+
+.left{
+left:5px;
+}
+
+.right{
+right:5px;
+}
+
+@media (max-width: 900px){
+.card{
+min-width:50%;
+}
+}
+
+@media (max-width: 600px){
+.card{
+min-width:100%;
+}
+
+.arrow{
+width:34px;
+height:34px;
+font-size:16px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="track" id="track">
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_81bdb04e394a4fae98b2616479de8ced~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_541f629499ff43c8a455953a059d8620~mv2.jpg">
+<div class="label before">antes</div>
+<div class="label afterLabel">depois</div>
+</div>
+</div>
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_215d179af6494d7c9cef8b33c3dd3c05~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_a3e3dd44e5d4444b9672d2966038da3b~mv2.jpg">
+<div class="label before">antes</div>
+<div class="label afterLabel">depois</div>
+</div>
+</div>
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_126d02eecf1d48a3ad02ac31a46d0325~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_5a3b452597334c268984fa4b8d90f403~mv2.jpg">
+<div class="label before">antes</div>
+<div class="label afterLabel">depois</div>
+</div>
+</div>
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_5373621e0c8f4083bedbe0d7278d83ab~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_b475a73d95f2485d9d57de2c78229800~mv2.jpg">
+<div class="label before">antes</div>
+<div class="label afterLabel">depois</div>
+</div>
+</div>
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_1fa43a2e07e84400babb310f73fb4095~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_4235cfd8b2fe42e0b4cfb3275401f160~mv2.jpg">
+<div class="label before">antes</div>
+<div class="label afterLabel">depois</div>
+</div>
+</div>
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_b7654bf88803403185fd5c1ad699e70e~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_d6d1483de6c345028eb2b92872a7c621~mv2.jpg">
+<div class="label before">antes</div>
+<div class="label afterLabel">depois</div>
+</div>
+</div>
+
+<div class="card">
+<div class="imageBox">
+<img src="https://static.wixstatic.com/media/9459e7_1248f60fdfd74c2e94a5fe70a7f1712d~mv2.jpg">
+<img class="after" src="https://static.wixstatic.com/media/9459e7_47ac3558e33a47a9aee3e095efb12006~mv2.jpg">
+<div class="label before">ANTES</div>
+<div class="label afterLabel">DEPOIS</div>
+</div>
+</div>
+
+</div>
+
+<div class="arrow left" onclick="moveSlide(-1)">‹</div>
+<div class="arrow right" onclick="moveSlide(1)">›</div>
+
+</div>
+
+<script>
+
+let index = 0;
+let track = document.getElementById("track");
+
+function moveSlide(direction){
+
+let cards = document.querySelectorAll(".card")
+let visible = window.innerWidth <= 600 ? 1 :
+              window.innerWidth <= 900 ? 2 : 3
+
+let maxIndex = cards.length - visible
+
+index += direction
+
+if(index < 0) index = maxIndex
+if(index > maxIndex) index = 0
+
+track.style.transform =
+"translateX(" + (-index * (100/visible)) + "%)"
+
+}
+
+setInterval(()=>{
+
+let cards = document.querySelectorAll(".imageBox");
+
+cards.forEach((card)=>{
+
+if(!card.matches(":hover")){
+
+let after = card.querySelector(".after");
+let beforeLabel = card.querySelector(".before");
+let afterLabel = card.querySelector(".afterLabel");
+
+after.style.opacity = 1;
+
+afterLabel.classList.add("active");
+beforeLabel.classList.remove("active");
+
+setTimeout(()=>{
+
+after.style.opacity = 0;
+
+beforeLabel.classList.add("active");
+afterLabel.classList.remove("active");
+
+},2000);
+
+}
+
+});
+
+},5000);
+document.querySelectorAll(".imageBox").forEach((card)=>{
+
+let after = card.querySelector(".after");
+let beforeLabel = card.querySelector(".before");
+let afterLabel = card.querySelector(".afterLabel");
+
+card.addEventListener("mouseenter", ()=>{
+
+after.style.opacity = 1;
+
+afterLabel.classList.add("active");
+beforeLabel.classList.remove("active");
+
+});
+
+card.addEventListener("mouseleave", ()=>{
+
+after.style.opacity = 0;
+
+beforeLabel.classList.add("active");
+afterLabel.classList.remove("active");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

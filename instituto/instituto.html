@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: "Funnel Display", sans-serif;
+  background: #ffffff;
+  color: #111;
+}
+
+.topo {
+  text-align: center;
+  padding: 100px 20px 40px;
+}
+
+.topo h1 {
+  font-size: 42px;
+  font-weight: 600;
+  color: #072E7A;
+  letter-spacing: -1px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  padding: 40px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #eee;
+  background: #fff;
+  transition: all 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: linear-gradient(135deg, #1A56CD, #51B5FC);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 20px 40px rgba(26,86,205,0.15);
+}
+
+.card:hover h2,
+.card:hover p,
+.card:hover div {
+  color: white;
+}
+
+h2 {
+  color: #1A56CD;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+p {
+  color: #444;
+  line-height: 1.6;
+  transition: 0.3s;
+}
+
+.lista div {
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.lista div::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #51B5FC;
+  transition: 0.3s;
+}
+
+.card:hover .lista div::before {
+  color: white;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.botao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1A56CD, #51B5FC);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(26,86,205,0.25);
+}
+
+.botao::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  left: -110%;
+  top: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.5s;
+}
+
+.botao:hover::after {
+  left: 100%;
+}
+
+.botao:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(26,86,205,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<section class="topo">
+  <h1>Instituto Comuta</h1>
+</section>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Quem Somos</h2>
+    <p>
+      O Instituto Comuta é uma organização social que promove o direito à moradia digna como pilar para a justiça climática e territorial. Atuamos com melhorias habitacionais, adaptação ao clima e mobilização comunitária em territórios vulneráveis, com foco em soluções acessíveis, colaborativas e enraizadas nas necessidades locais.
+    </p>
+
+    <p>
+      Somos o braço social da Comuta Arquitetura e acreditamos que arquitetura também é ferramenta de transformação social.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>O Que Fazemos</h2>
+    <div class="lista">
+      <div><strong>Melhorias Habitacionais:</strong> reformas seguras, acessíveis e participativas</div>
+      <div><strong>Adaptação Climática:</strong> soluções para ilhas de calor, ventilação e contenção de enchentes</div>
+      <div><strong>Urbanismo Social</strong></div>
+      <div><strong>Mobilização de Recursos:</strong> articulação com redes locais, editais e voluntariado</div>
+      <div><strong>ESG:</strong> soluções para empresas</div>
+      <div><strong>Advocacy</strong></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="https://SEU-LINK-AQUI.com" target="_blank" class="botao">
+      Conhecer projetos do Instituto →
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+
+html,body{
+margin:0;
+overflow-x:hidden;
+font-family:"Funnel Display",Arial;
+}
+
+.section{
+max-width:1100px;
+margin:80px auto;
+position:relative;
+}
+
+.slider-area{
+overflow:hidden;
+position:relative;
+padding:40px 80px;
+}
+
+.slider-area:before,
+.slider-area:after{
+content:"";
+position:absolute;
+top:0;
+width:80px;
+height:100%;
+z-index:3;
+pointer-events:none;
+}
+
+.slider-area:before{
+left:0;
+
+}
+
+.slider-area:after{
+right:0;
+}
+
+.slider{
+display:flex;
+gap:25px;
+transition:transform .5s ease;
+}
+
+.card{
+width:300px;
+flex-shrink:0;
+background:white;
+border-radius:16px;
+padding:25px;
+text-align:center;
+transition:.35s;
+cursor:pointer;
+border:1px solid #eee;
+}
+
+.card:hover{
+transform:translateY(-4px);
+}
+
+.logo{
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:15px;
+}
+
+.logo img{
+max-height:100%;
+filter:grayscale(100%);
+transition:.3s;
+}
+
+.card:hover img{
+filter:grayscale(0);
+transform:scale(1.05);
+}
+
+.titulo{
+font-weight:600;
+font-size:17px;
+margin-bottom:8px;
+}
+
+.desc{
+font-size:13px;
+color:#555;
+line-height:1.4;
+}
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:44px;
+height:44px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:5;
+font-size:20px;
+user-select:none;
+transition:.25s;
+border:1px solid #e5e5e5;
+background:#fafafa;
+}
+
+.arrow:hover{
+transform:translateY(-50%) scale(1.08);
+}
+
+.arrow-left{
+left:10px;
+}
+
+.arrow-right{
+right:10px;
+}
+
+@media(max-width:700px){
+
+.slider-area{
+overflow:visible;
+padding:10px 0;
+}
+
+.slider-area:before,
+.slider-area:after{
+display:none;
+}
+
+.slider{
+display:block;
+transform:none !important;
+}
+
+.card{
+width:100%;
+box-sizing:border-box;
+margin-bottom:14px;
+padding:16px;
+border-radius:12px;
+}
+
+.logo{
+height:46px;
+margin-bottom:8px;
+}
+
+.titulo{
+font-size:15px;
+margin-bottom:4px;
+}
+
+.desc{
+font-size:12px;
+line-height:1.35;
+}
+
+.arrow{
+display:none;
+}
+
+.section{
+margin:30px 12px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="section">
+
+<div class="slider-area">
+
+<div class="arrow arrow-left" onclick="moveSlide(-1)">‹</div>
+<div class="arrow arrow-right" onclick="moveSlide(1)">›</div>
+
+<div class="slider" id="slider">
+
+<div class="card">
+<div class="logo">
+<img src="https://static.wixstatic.com/media/9459e7_d448a5fc90124f92be35d7256f64844a~mv2.png">
+</div>
+<div class="titulo">Financiamento Social</div>
+<div class="desc">Em até 36x com juros de 0,96% ao mês.</div>
+</div>
+
+<div class="card">
+<div class="logo">
+<img src="https://static.wixstatic.com/media/9459e7_0527f058c38e4ecda58578cbed23ab56~mv2.png">
+</div>
+<div class="titulo">Fundo Social</div>
+<div class="desc">Em até 24x com juros de 1% ao mês.</div>
+</div>
+
+<div class="card">
+<div class="logo">
+<img src="https://static.wixstatic.com/media/9459e7_1fe61548ab4f43459ed4a6c0ef16ce75~mv2.png">
+</div>
+<div class="titulo">À Vista</div>
+<div class="desc">50% de entrada + 50% ao término.</div>
+</div>
+
+<div class="card">
+<div class="logo">
+<img src="https://static.wixstatic.com/media/9459e7_435e1025d8bc48c3b157d4e85e4579b8~mv2.png">
+</div>
+<div class="titulo">Cartão de Crédito</div>
+<div class="desc">Em até 12x com juros conforme parcelas.</div>
+</div>
+
+<div class="card">
+<div class="logo">
+<img src="https://static.wixstatic.com/media/9459e7_1299836b8b444ff8808863e51120cb45~mv2.png">
+</div>
+<div class="titulo">Reforma Casa Brasil</div>
+<div class="desc">Até 30 mil reais da Caixa Econômica.</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const slider = document.getElementById("slider")
+let index = 0
+
+function getCardWidth(){
+const card = slider.querySelector(".card")
+const style = window.getComputedStyle(slider)
+const gap = parseInt(style.gap) || 0
+return card.offsetWidth + gap
+}
+
+function getVisibleCards(){
+const area = document.querySelector(".slider-area")
+const cardWidth = getCardWidth()
+return Math.floor(area.offsetWidth / cardWidth)
+}
+
+function setupLoop(){
+
+if(window.innerWidth <= 700){
+return
+}
+
+const originalCards = Array.from(slider.children)
+const visible = getVisibleCards()
+
+slider.innerHTML = ""
+
+const startClones = originalCards.slice(-visible).map(el => el.cloneNode(true))
+const endClones = originalCards.slice(0, visible).map(el => el.cloneNode(true))
+
+const all = [...startClones, ...originalCards, ...endClones]
+all.forEach(el => slider.appendChild(el))
+
+index = visible
+updatePosition()
+
+}
+
+function updatePosition(){
+const move = getCardWidth()
+slider.style.transform = `translateX(${-index * move}px)`
+}
+
+function moveSlide(dir){
+
+if(window.innerWidth <= 700){
+return
+}
+
+index += dir
+
+const move = getCardWidth()
+slider.style.transition = "transform .5s ease"
+slider.style.transform = `translateX(${-index * move}px)`
+
+setTimeout(() => {
+
+const total = slider.children.length
+const visible = getVisibleCards()
+
+if(index >= total - visible){
+slider.style.transition = "none"
+index = visible
+updatePosition()
+}
+
+if(index < visible){
+slider.style.transition = "none"
+index = total - (visible * 2)
+updatePosition()
+}
+
+},500)
+
+}
+
+setupLoop()
+
+window.addEventListener("resize", () => {
+setupLoop()
+})
+
+</script>
+
+</body>
+</html>

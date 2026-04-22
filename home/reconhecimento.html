@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display", Arial;
+background:white;
+overflow: hidden;
+}
+
+.grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+max-width:1000px;
+margin:60px auto;
+}
+
+.item{
+position:relative;
+width:140px;
+text-align:center;
+cursor:pointer;
+}
+
+.logo img{
+width:100%;
+filter:grayscale(100%);
+transition:.3s ease;
+}
+
+.item:hover .logo img{
+filter:grayscale(0%);
+transform:scale(1.05);
+}
+
+.info{
+position:absolute;
+top:120%;
+left:50%;
+transform:translateX(-50%);
+width:220px;
+
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 6px 18px rgba(0,0,0,0.12);
+
+opacity:0;
+pointer-events:none;
+transition:.3s ease;
+}
+
+.item:hover .info{
+opacity:1;
+pointer-events:auto;
+top:110%;
+}
+
+.titulo{
+font-size:13px;
+margin-bottom:10px;
+}
+
+.btn{
+display:inline-block;
+padding:6px 14px;
+background:black;
+color:white;
+text-decoration:none;
+font-size:12px;
+border-radius:4px;
+}
+
+@media (max-width: 768px){
+
+body{
+overflow:auto;
+}
+
+.item{
+width:45%;
+}
+
+.info{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+<div class="item">
+<a class="mobile-link" href="https://exemplo.com/materia1" target="_blank">
+  <div class="logo">
+    <img src="https://static.wixstatic.com/shapes/9459e7_899eb6c6459c4673b6089362c6d520e8.svg">
+  </div>
+</a>
+<div class="info">
+  <div class="titulo">Startups querem democratizar o acesso à moradia</div>
+  <a class="btn" target="_blank" href="https://exemplo.com/materia1">Ler matéria</a>
+</div>
+</div>
+
+<div class="item">
+<a class="mobile-link" href="https://exemplo.com/materia2" target="_blank">
+  <div class="logo">
+    <img src="https://static.wixstatic.com/shapes/9459e7_14203f870ffe4a3ca6a512cd369a25e6.svg">
+  </div>
+</a>
+<div class="info">
+  <div class="titulo">Crescem negócios de reforma em moradia popular</div>
+  <a class="btn" target="_blank" href="https://exemplo.com/materia2">Ler matéria</a>
+</div>
+</div>
+
+<div class="item">
+<a class="mobile-link" href="https://exemplo.com/materia3" target="_blank">
+  <div class="logo">
+    <img src="https://static.wixstatic.com/media/9459e7_650a9fb9b4e74939a34236f0b35178bf~mv2.png">
+  </div>
+</a>
+<div class="info">
+  <div class="titulo">Construtech traz nova vida às periferias</div>
+  <a class="btn" target="_blank" href="https://exemplo.com/materia3">Ler matéria</a>
+</div>
+</div>
+
+<div class="item">
+<a class="mobile-link" href="https://exemplo.com/materia4" target="_blank">
+  <div class="logo">
+    <img src="https://static.wixstatic.com/shapes/9459e7_bb05507b11c74aed9bdebbe0636307a1.svg">
+  </div>
+</a>
+<div class="info">
+  <div class="titulo">Empreendedorismo de impacto na habitação</div>
+  <a class="btn" target="_blank" href="https://exemplo.com/materia4">Ler matéria</a>
+</div>
+</div>
+
+<div class="item">
+<a class="mobile-link" href="https://exemplo.com/materia5" target="_blank">
+  <div class="logo">
+    <img src="https://static.wixstatic.com/shapes/9459e7_e11211e2f51b466da33f518d23be5e63.svg">
+  </div>
+</a>
+<div class="info">
+  <div class="titulo">Executivos discutem soluções para moradia digna</div>
+  <a class="btn" target="_blank" href="https://exemplo.com/materia5">Ler matéria</a>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

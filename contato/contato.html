@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Funnel Display", sans-serif;
+}
+
+.contato-container {
+  background: linear-gradient(135deg, #ff7a00, #ff5a00);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contato-box {
+  background: #ffffff;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.icone {
+  width: 65px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.texto {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.botao {
+  margin-top: 20px;
+  padding: 15px;
+  width: 100%;
+  background: linear-gradient(135deg, #ff7a00, #ff5a00);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.info {
+  margin-top: 30px;
+  text-align: left;
+  font-size: 14px;
+  color: #444;
+}
+
+.info div {
+  margin-bottom: 10px;
+}
+
+.erro {
+  color: red;
+  font-size: 13px;
+  display: none;
+  text-align: left;
+}
+
+.sucesso {
+  margin-top: 15px;
+  color: green;
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<section class="contato-container">
+  <div class="contato-box">
+
+    <img src="https://static.wixstatic.com/shapes/9459e7_f2f6717fadb84d4b8a7060ec1e020ee2.svg" class="icone">
+
+    <h2>Fale com a Comuta</h2>
+
+    <p class="texto">
+      Precisa de ajuda, tem uma dúvida ou quer falar sobre uma parceria?
+      Estamos aqui para você. Mande uma mensagem e vamos juntos transformar espaços!
+    </p>
+
+    <input class="input" type="text" id="nome" placeholder="Seu nome">
+    <div class="erro" id="erroNome">Digite seu nome</div>
+
+    <input class="input" type="email" id="email" placeholder="Seu e-mail">
+    <div class="erro" id="erroEmail">Email inválido</div>
+
+    <textarea class="input" id="mensagem" placeholder="Sua mensagem"></textarea>
+    <div class="erro" id="erroMensagem">Digite uma mensagem</div>
+
+    <button class="botao" onclick="enviarMensagem()">Enviar mensagem</button>
+
+    <p class="sucesso" id="sucessoMsg">Mensagem enviada com sucesso!</p>
+
+    <div class="info">
+      <div><strong>•</strong> (11) 94567-8593</div>
+      <div><strong>•</strong> contato@comuta.com.br</div>
+      <div><strong>•</strong> Rua Zike Tuma, 744 - Casa 4<br>Jardim Ubirajara - São Paulo/SP</div>
+      <div><strong>•</strong> Segunda a Sexta — 9h às 18h</div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function enviarMensagem() {
+  let valido = true;
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const mensagem = document.getElementById("mensagem").value.trim();
+
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  document.querySelectorAll(".erro").forEach(e => e.style.display = "none");
+
+  if (!nome) {
+    document.getElementById("erroNome").style.display = "block";
+    valido = false;
+  }
+
+  if (!email || !emailValido.test(email)) {
+    document.getElementById("erroEmail").style.display = "block";
+    valido = false;
+  }
+
+  if (!mensagem) {
+    document.getElementById("erroMensagem").style.display = "block";
+    valido = false;
+  }
+
+  if (!valido) return;
+
+  console.log(nome, email, mensagem);
+
+  document.getElementById("sucessoMsg").style.display = "block";
+}
+</script>
+
+</body>
+</html>

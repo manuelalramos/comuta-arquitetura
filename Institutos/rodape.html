@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Funnel Display", sans-serif;
+overflow: hidden;
+background: #040129;
+}
+
+.footer{
+position:relative;
+color:#fff;
+padding:80px 8%;
+background:url("SUA-IMAGEM-AQUI.jpg") center/cover no-repeat;
+}
+
+.footer-container{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+
+max-width:1100px;
+margin:auto;
+}
+
+.footer h3{
+font-size:18px;
+margin-bottom:15px;
+}
+
+.footer nav a{
+display:block;
+color:#f7f7f7;
+text-decoration:none;
+margin-bottom:10px;
+font-size:14px;
+transition:.3s;
+}
+
+.footer nav a:hover{
+color:#a4a4a4;
+transform:translateX(5px);
+}
+
+.footer p{
+font-size:14px;
+color:#e5e5e5;
+margin-bottom:10px;
+line-height:1.6;
+text-align:justify;
+}
+
+.footer nav a{
+display:block;
+color:#f7f7f7;
+text-decoration:none;
+margin-bottom:10px;
+font-size:14px;
+transition:.3s;
+text-align:justify;
+}
+
+.footer-btn{
+display:inline-block;
+margin-top:10px;
+padding:12px 20px;
+background:#ffffff;
+color:#040129;
+border-radius:8px;
+text-decoration:none;
+font-size:14px;
+transition:.3s;
+}
+
+.footer-btn:hover{
+transform:translateY(-2px);
+}
+
+a{
+text-decoration:none;
+}
+
+.footer-bottom{
+margin-top:60px;
+padding-top:25px;
+border-top:1px solid rgba(255,255,255,0.2);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
+
+font-size:13px;
+}
+
+.social{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.social img{
+width:45px;
+height:45px;
+}
+
+@media(max-width:900px){
+
+.footer-container{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.footer-container{
+grid-template-columns:1fr;
+}
+
+.footer{
+padding:60px 30px;
+}
+
+.footer-bottom{
+flex-direction:column;
+text-align:center;
+gap:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<section>
+<h3>Instituto Comuta</h3>
+<p>
+Organização social que transforma moradias em comunidades através de reformas seguras, dignas e acessíveis.
+</p>
+</section>
+
+<nav>
+<h3>Institucional</h3>
+<a href="https://www.institutocomuta.org.br/" target="_top">Home</a>
+<a href="https://www.institutocomuta.org.br/quem-somos" target="_top">Quem somos</a>
+<a href="https://www.institutocomuta.org.br/solu%C3%A7%C3%B5es" target="_top">Soluções</a>
+<a href="https://www.institutocomuta.org.br/artigos" target="_top">Artigos</a>
+<a href="https://www.institutocomuta.org.br/contato" target="_top">Contato</a>
+<a href="https://www.institutocomuta.org.br/contato" class="doe" target="_top" style="color: #040129; background-color: #e5e5e5; width: 90px; height: 30px; display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;">Doe agora!</a>
+</nav>
+
+<section>
+<h3>Fale com a gente</h3>
+
+<p>
+Precisa de uma reforma ou quer apoiar nossos projetos?
+</p>
+
+<a href="https://api.whatsapp.com/send?phone=5511963132369" class="footer-btn" target="_blank">
+Falar no WhatsApp
+</a>
+
+<br><br>
+
+<a href="mailto:Institutocomuta@gmail.com?body=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20conversar!" style="color:#f7f7f7;">
+Institutocomuta@gmail.com
+</a>
+
+</section>
+
+</div>
+
+<div class="footer-bottom">
+
+<div>
+
+<p>
+<strong>CNPJ:</strong> 60.851.739/0001-39<br>
+
+<strong>Razão Social:</strong> Instituto Comuta<br>
+
+<a href="https://maps.app.goo.gl/TCc5Df8VxwJ3PCGQA" target="_top" style="color:#f7f7f7;">
+Rua Zike Tuma, 760 - casa 4 - Sala 1<br>
+Jardim Ubirajara - CEP: 04458-000
+</a>
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+Copyright © 2025 — Todos os direitos reservados<br>
+Instituto Comuta
+</p>
+
+<div class="social">
+
+<a href="https://www.instagram.com/institutocomuta/" target="_blank">
+<img src="https://static.wixstatic.com/shapes/e39337_23633711e2c8461ca51210ee90a683fe.svg">
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>

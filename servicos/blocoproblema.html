@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+<title>CTA</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Funnel Display', sans-serif;
+}
+
+.cta-section {
+    padding: 80px 20px;
+}
+
+.cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-container::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,122,0,0.12) 0%, transparent 60%);
+    top: -50%;
+    left: -50%;
+}
+
+.cta-container h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.cta-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #ff7a00;
+    color: white;
+    padding: 16px 34px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cta-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+    transform: skewX(-25deg);
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    background: #ff7a00;
+}
+
+.cta-btn:hover::after {
+    left: 130%;
+    transition: left 0.6s ease;
+}
+
+@media (max-width: 600px) {
+    .cta-container {
+        padding: 40px 20px;
+    }
+
+    .cta-container h2 {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="cta-section">
+    <div class="cta-container">
+
+        <h2>Transforme seu espaço com a solução certa</h2>
+
+        <p>
+            Se sua casa tem infiltração, calor excessivo, falta de ventilação
+            ou acabamento incompleto, a <strong>Comuta</strong> desenvolve a solução ideal
+            para transformar seu ambiente com qualidade e eficiência.
+        </p>
+
+        <a href="https://api.whatsapp.com/send?phone=5511945678593"
+        class="cta-btn"
+            target="_blank"
+            rel="noopener"
+        >Solicitar pré-orçamento
+        </a>
+
+    </div>
+</section>
+
+</body>
+</html>

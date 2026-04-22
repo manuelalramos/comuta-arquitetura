@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doacao por PIX | Instituto Comuta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #4b5563;
+      --line: rgba(15, 23, 42, 0.08);
+      --brand: #1a56cd;
+      --brand-2: #51b5fc;
+      --success: #0f9d58;
+      --warn: #b7791f;
+      --shadow: 0 24px 60px rgba(26, 86, 205, 0.14);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Funnel Display", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(81, 181, 252, 0.24), transparent 30%),
+        radial-gradient(circle at top right, rgba(26, 86, 205, 0.18), transparent 24%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel,
+    .pix-card,
+    .security-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -90px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(26, 86, 205, 0.14), rgba(81, 181, 252, 0.2));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(26, 86, 205, 0.08);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 9ch;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 56ch;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .impact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .impact-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+    }
+
+    .impact-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--brand);
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .impact-item span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .pix-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .pix-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .pix-head h2,
+    .security-card h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .pix-head p,
+    .security-card p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .status-badge {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(15, 157, 88, 0.12);
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .amount-btn,
+    .ghost-btn,
+    .copy-btn {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .amount-btn {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: #eef4ff;
+      color: var(--brand);
+      font-weight: 700;
+      transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+    }
+
+    .amount-btn:hover,
+    .amount-btn.is-active {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .custom-value {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    .custom-value:focus {
+      border-color: rgba(26, 86, 205, 0.4);
+      box-shadow: 0 0 0 4px rgba(26, 86, 205, 0.08);
+    }
+
+    .primary-btn {
+      padding: 16px 18px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(26, 86, 205, 0.24);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 36px rgba(26, 86, 205, 0.3);
+    }
+
+    .primary-btn:disabled,
+    .ghost-btn:disabled,
+    .copy-btn:disabled {
+      opacity: 0.6;
+      cursor: progress;
+    }
+
+    .qr-shell {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
+      border: 1px solid rgba(26, 86, 205, 0.08);
+    }
+
+    .qr-frame {
+      width: min(100%, 280px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      border-radius: 24px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .qr-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .qr-placeholder {
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+      padding: 20px;
+    }
+
+    .code-box {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      word-break: break-all;
+      color: #1f2937;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      min-height: 76px;
+    }
+
+    .meta-row,
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .meta-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .ghost-btn,
+    .copy-btn {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid rgba(26, 86, 205, 0.14);
+      font-weight: 700;
+    }
+
+    .security-card {
+      margin-top: 22px;
+      padding: 24px 26px;
+    }
+
+    .security-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .security-list li {
+      padding-left: 18px;
+      position: relative;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .security-list li::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(183, 121, 31, 0.08);
+      color: #7a4b0d;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .error {
+      display: none;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(190, 24, 93, 0.08);
+      color: #a31248;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .error.is-visible {
+      display: block;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .impact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 20px, 1080px);
+        padding-top: 22px;
+      }
+
+      .panel,
+      .pix-card,
+      .security-card {
+        border-radius: 22px;
+      }
+
+      .panel,
+      .pix-card {
+        padding: 22px;
+      }
+
+      .amount-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pix-head {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <article class="panel">
+        <span class="eyebrow">Instituto Comuta</span>
+        <h1>Doar por PIX pode ser simples e seguro.</h1>
+        <p class="lead">
+          Sua doacao ajuda a levar melhorias habitacionais, adaptacao climatica e acoes territoriais para comunidades vulneraveis. Gere abaixo uma cobranca PIX e conclua a doacao em poucos segundos.
+        </p>
+
+        <div class="impact">
+          <div class="impact-item">
+            <strong>R$ 30</strong>
+            <span>Apoia materiais de mobilizacao e acoes comunitarias.</span>
+          </div>
+          <div class="impact-item">
+            <strong>R$ 80</strong>
+            <span>Contribui para pequenas melhorias em ambientes prioritarios.</span>
+          </div>
+          <div class="impact-item">
+            <strong>R$ 150</strong>
+            <span>Fortalece iniciativas de moradia digna com impacto local.</span>
+          </div>
+        </div>
+      </article>
+
+      <section class="pix-card">
+        <div class="pix-head">
+          <div>
+            <h2>Pagamento por PIX</h2>
+            <p>Escolha um valor e gere um QR Code dinamico com expiracao controlada.</p>
+          </div>
+          <span class="status-badge" id="paymentStatus">Aguardando geracao</span>
+        </div>
+
+        <div>
+          <span class="field-label">Valores sugeridos</span>
+          <div class="amount-grid" id="amountGrid">
+            <button class="amount-btn is-active" type="button" data-value="30">R$ 30</button>
+            <button class="amount-btn" type="button" data-value="50">R$ 50</button>
+            <button class="amount-btn" type="button" data-value="80">R$ 80</button>
+            <button class="amount-btn" type="button" data-value="100">R$ 100</button>
+            <button class="amount-btn" type="button" data-value="150">R$ 150</button>
+            <button class="amount-btn" type="button" data-value="250">R$ 250</button>
+          </div>
+        </div>
+
+        <label>
+          <span class="field-label">Ou informe outro valor</span>
+          <input id="customValue" class="custom-value" type="number" min="5" step="0.01" placeholder="Ex.: 45,00">
+        </label>
+
+        <button id="generateButton" class="primary-btn" type="button">Gerar cobranca PIX</button>
+
+        <div class="error" id="errorBox"></div>
+
+        <div class="qr-shell">
+          <div class="qr-frame">
+            <div class="qr-placeholder" id="qrPlaceholder">
+              Gere a cobranca para exibir aqui o QR Code e o codigo PIX Copia e Cola.
+            </div>
+            <img id="qrImage" alt="QR Code PIX" hidden>
+          </div>
+
+          <div>
+            <span class="field-label">PIX Copia e Cola / chave retornada pelo provedor</span>
+            <div class="code-box" id="pixCodeBox">Nenhuma cobranca gerada ainda.</div>
+          </div>
+
+          <div class="meta-row">
+            <span id="expiresAt">Expiracao: aguardando</span>
+            <span id="donationRef">Referencia: aguardando</span>
+          </div>
+
+          <div class="action-row">
+            <button id="copyButton" class="copy-btn" type="button" disabled>Copiar codigo PIX</button>
+            <button id="refreshButton" class="ghost-btn" type="button" disabled>Atualizar QR Code</button>
+          </div>
+        </div>
+
+        <p class="footer-note">
+          Esta pagina e segura quando o QR Code e criado por um backend ou PSP, nunca por chave secreta exposta no HTML.
+        </p>
+      </section>
+    </section>
+
+    <section class="security-card">
+      <h3>Como usar com seguranca no Wix</h3>
+      <p>
+        O HTML sozinho pode mostrar a cobranca, mas a geracao do PIX dinamico precisa acontecer fora desta pagina, em um endpoint seguro.
+      </p>
+
+      <ul class="security-list">
+        <li>Guarde token, client secret e credenciais do banco ou gateway apenas no backend.</li>
+        <li>Faca esta pagina chamar um endpoint HTTPS que crie a cobranca e devolva somente os dados necessarios para exibicao.</li>
+        <li>Defina expiracao curta para o QR Code e regenere quando vencer.</li>
+        <li>Valide a confirmacao do pagamento por webhook no servidor, e nao pela tela do navegador.</li>
+        <li>Se usar Velo no Wix, mantenha os segredos no Secrets Manager e execute a chamada ao PSP no backend.</li>
+      </ul>
+
+      <div class="notice">
+        Endpoint esperado nesta pagina: troque <strong>PIX_API_URL</strong> no script por um endpoint seu ou do provedor. O endpoint deve retornar JSON com <strong>qrCodeImage</strong>, <strong>pixCode</strong>, <strong>donationId</strong>, <strong>expiresAt</strong> e opcionalmente <strong>status</strong>.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const PIX_API_URL = "https://SEU-ENDPOINT-SEGURO/api/pix/create";
+    const PIX_REFRESH_URL = "https://SEU-ENDPOINT-SEGURO/api/pix/status";
+    const DEFAULT_AMOUNT = 30;
+
+    const state = {
+      selectedAmount: DEFAULT_AMOUNT,
+      donationId: null,
+      pixCode: "",
+      refreshTimer: null
+    };
+
+    const amountGrid = document.getElementById("amountGrid");
+    const customValueInput = document.getElementById("customValue");
+    const generateButton = document.getElementById("generateButton");
+    const refreshButton = document.getElementById("refreshButton");
+    const copyButton = document.getElementById("copyButton");
+    const paymentStatus = document.getElementById("paymentStatus");
+    const qrImage = document.getElementById("qrImage");
+    const qrPlaceholder = document.getElementById("qrPlaceholder");
+    const pixCodeBox = document.getElementById("pixCodeBox");
+    const expiresAt = document.getElementById("expiresAt");
+    const donationRef = document.getElementById("donationRef");
+    const errorBox = document.getElementById("errorBox");
+
+    amountGrid.addEventListener("click", function (event) {
+      const button = event.target.closest(".amount-btn");
+      if (!button) return;
+
+      document.querySelectorAll(".amount-btn").forEach(function (item) {
+        item.classList.remove("is-active");
+      });
+
+      button.classList.add("is-active");
+      state.selectedAmount = Number(button.dataset.value);
+      customValueInput.value = "";
+    });
+
+    customValueInput.addEventListener("input", function () {
+      document.querySelectorAll(".amount-btn").forEach(function (item) {
+        item.classList.remove("is-active");
+      });
+    });
+
+    generateButton.addEventListener("click", function () {
+      createPixCharge();
+    });
+
+    refreshButton.addEventListener("click", function () {
+      refreshPixCharge();
+    });
+
+    copyButton.addEventListener("click", async function () {
+      if (!state.pixCode) return;
+
+      try {
+        await navigator.clipboard.writeText(state.pixCode);
+        copyButton.textContent = "Codigo copiado";
+        window.setTimeout(function () {
+          copyButton.textContent = "Copiar codigo PIX";
+        }, 1800);
+      } catch (error) {
+        showError("Nao foi possivel copiar automaticamente. O navegador do Wix pode restringir essa acao.");
+      }
+    });
+
+    function getSelectedAmount() {
+      const customValue = customValueInput.value.replace(",", ".");
+      const parsedCustomValue = Number(customValue);
+
+      if (customValue && !Number.isNaN(parsedCustomValue) && parsedCustomValue >= 5) {
+        return parsedCustomValue;
+      }
+
+      return state.selectedAmount;
+    }
+
+    async function createPixCharge() {
+      const amount = getSelectedAmount();
+      setLoading(true, "Gerando cobranca...");
+      clearError();
+
+      try {
+        const response = await fetch(PIX_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            amount: amount,
+            project: "instituto-comuta"
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("Falha ao gerar cobranca PIX.");
+        }
+
+        const payload = await response.json();
+        applyPixPayload(payload);
+      } catch (error) {
+        showError("Conecte esta pagina a um endpoint seguro para gerar o PIX dinamico. Sem backend, o QR Code nao deve ser criado no navegador.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function refreshPixCharge() {
+      if (!state.donationId) return;
+      setLoading(true, "Atualizando...");
+      clearError();
+
+      try {
+        const response = await fetch(PIX_REFRESH_URL + "?donationId=" + encodeURIComponent(state.donationId), {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Falha ao atualizar cobranca PIX.");
+        }
+
+        const payload = await response.json();
+        applyPixPayload(payload);
+      } catch (error) {
+        showError("Nao foi possivel atualizar o QR Code agora. Verifique o endpoint e as configuracoes de CORS.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function applyPixPayload(payload) {
+      state.donationId = payload.donationId || payload.reference || "sem-referencia";
+      state.pixCode = payload.pixCode || payload.emv || payload.pixKey || "";
+
+      if (payload.qrCodeImage) {
+        qrImage.src = payload.qrCodeImage;
+        qrImage.hidden = false;
+        qrPlaceholder.hidden = true;
+      }
+
+      pixCodeBox.textContent = state.pixCode || "Codigo PIX nao informado pelo endpoint.";
+      paymentStatus.textContent = payload.status || "Cobranca gerada";
+      expiresAt.textContent = "Expiracao: " + formatDate(payload.expiresAt);
+      donationRef.textContent = "Referencia: " + state.donationId;
+
+      copyButton.disabled = !state.pixCode;
+      refreshButton.disabled = false;
+
+      scheduleRefresh(payload.expiresAt, payload.refreshAfterSeconds);
+    }
+
+    function formatDate(dateValue) {
+      if (!dateValue) return "nao informado";
+      const date = new Date(dateValue);
+      if (Number.isNaN(date.getTime())) return String(dateValue);
+
+      return new Intl.DateTimeFormat("pt-BR", {
+        dateStyle: "short",
+        timeStyle: "short"
+      }).format(date);
+    }
+
+    function scheduleRefresh(expiresAtValue, refreshAfterSeconds) {
+      if (state.refreshTimer) {
+        window.clearTimeout(state.refreshTimer);
+      }
+
+      const fallbackSeconds = 45;
+      let nextRefreshMs = (refreshAfterSeconds || fallbackSeconds) * 1000;
+
+      if (expiresAtValue) {
+        const expiresMs = new Date(expiresAtValue).getTime() - Date.now();
+        if (!Number.isNaN(expiresMs) && expiresMs > 0) {
+          nextRefreshMs = Math.min(nextRefreshMs, Math.max(15000, expiresMs - 10000));
+        }
+      }
+
+      state.refreshTimer = window.setTimeout(function () {
+        refreshPixCharge();
+      }, nextRefreshMs);
+    }
+
+    function setLoading(isLoading, label) {
+      generateButton.disabled = isLoading;
+      refreshButton.disabled = isLoading || !state.donationId;
+      copyButton.disabled = isLoading || !state.pixCode;
+      if (label) generateButton.textContent = label;
+      if (!isLoading) generateButton.textContent = "Gerar cobranca PIX";
+    }
+
+    function showError(message) {
+      errorBox.textContent = message;
+      errorBox.classList.add("is-visible");
+    }
+
+    function clearError() {
+      errorBox.textContent = "";
+      errorBox.classList.remove("is-visible");
+    }
+  </script>
+</body>
+</html>
