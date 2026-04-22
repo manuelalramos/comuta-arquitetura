@@ -1,6 +1,6 @@
 <!-- HEADER COM IDENTIDADE VISUAL -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:f97316,100:fb923c&height=160&section=header&text=Comuta%20Arquitetura&fontSize=32&fontColor=ffffff&animation=fadeIn"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:f97316,100:fb923c&height=160&section=header&text=Comuta%20Reformas&fontSize=32&fontColor=ffffff&animation=fadeIn"/>
 </p>
 
 <h2 align="center">🏗️ Desenvolvimento Web • Design • Experiência do Usuário</h2>
@@ -55,6 +55,22 @@ Wix • HTML Embed • Custom Code • UI/UX Design
 🟧 Refinamento visual (cores, tipografia, layout)  
 🟧 Integração com Wix  
 🟧 Organização de conteúdo institucional  
+---
+
+## 🎨 Identidade visual
+
+O projeto segue a identidade da marca:
+
+🟧 **Cor principal:** Laranja  
+⚪ **Base:** Clean / branco  
+⬛ **Apoio:** Preto e cinza  
+
+💡 Foco em:
+- Leitura fácil  
+- Destaque para serviços  
+- Visual moderno e direto  
+- Experiência fluida entre desktop e mobile  
+
 
 ---
 
@@ -81,3 +97,56 @@ Esse projeto foi MUITO importante pra mim, principalmente em:
 ---
 
 ## 📁 Estrutura do projeto
+📦 comuta-arquitetura
+┣ 📂 pages
+┃ ┣ 📄 home.html
+┃ ┣ 📄 servicos.html
+┃ ┗ 📄 contato.html
+┣ 📂 components
+┃ ┣ 📄 header
+┃ ┣ 📄 footer
+┃ ┗ 📄 cards
+┣ 📂 styles
+┃ ┗ 📄 style.css
+┣ 📂 scripts
+┃ ┗ 📄 main.js
+
+
+---
+
+## 💬 Desafio técnico
+
+O maior desafio foi **adaptar código personalizado dentro do Wix**, mantendo:
+
+- Performance  
+- Responsividade  
+- Consistência visual  
+
+---
+
+## 🚀 Considerações finais
+
+Esse projeto marcou uma evolução importante na minha jornada, principalmente por unir:
+
+💡 Design  
+💻 Desenvolvimento  
+📈 Pensamento estratégico  
+
+---
+
+## 👩‍💻 Autora
+
+**Manuela Ramos**  
+Estagiária em Marketing • Multimídia • ADS (FIAP)  
+
+<p align="center">
+  <a href="mailto:manuelalimramos@hotmail.com">📧 Email</a> •
+  <a href="https://linkedin.com/in/manuelalramos">💼 LinkedIn</a>
+</p>
+
+---
+
+<!-- FOOTER -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF6A00,100:FF8C42&height=120&section=footer"/>
+</p>
