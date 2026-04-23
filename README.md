@@ -97,19 +97,21 @@ Esse projeto foi MUITO importante pra mim, principalmente em:
 ---
 
 ## 📁 Estrutura do projeto
-📦 comuta-arquitetura
-┣ 📂 pages
-┃ ┣ 📄 home.html
-┃ ┣ 📄 servicos.html
-┃ ┗ 📄 contato.html
-┣ 📂 components
-┃ ┣ 📄 header
-┃ ┣ 📄 footer
-┃ ┗ 📄 cards
-┣ 📂 styles
-┃ ┗ 📄 style.css
-┣ 📂 scripts
-┃ ┗ 📄 main.js
+<p>
+📦 comuta-arquitetura <br>
+┣ 📂 pages <br>
+┃ ┣ 📄 home.html <br>
+┃ ┣ 📄 servicos.html <br>
+┃ ┗ 📄 contato.html <br>
+┣ 📂 components <br>
+┃ ┣ 📄 header <br>
+┃ ┣ 📄 footer <br>
+┃ ┗ 📄 cards <br>
+┣ 📂 styles <br>
+┃ ┗ 📄 style.css <br>
+┣ 📂 scripts <br>
+┃ ┗ 📄 main.js  <br>
+</p>
 
 
 ---
