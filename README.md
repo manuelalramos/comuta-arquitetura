@@ -49,12 +49,13 @@ Wix • HTML Embed • Custom Code • UI/UX Design
 
 ## 🧩 O que foi desenvolvido
 
-🟧 Estruturação de páginas (Home, Serviços, etc.)  
-🟧 Componentes reutilizáveis  
-🟧 Ajustes de responsividade (mobile-first)  
-🟧 Refinamento visual (cores, tipografia, layout)  
-🟧 Integração com Wix  
-🟧 Organização de conteúdo institucional  
+<p>🟧 Estruturação de páginas (Home, Serviços, etc.) <br>
+🟧 Componentes reutilizáveis  <br>
+🟧 Ajustes de responsividade (mobile-first) <br>  
+🟧 Refinamento visual (cores, tipografia, layout) <br>
+🟧 Integração com <strong>Wix</strong> <br>
+🟧 Organização de conteúdo institucional</p>
+
 ---
 
 ## 🎨 Identidade visual
