@@ -90,7 +90,7 @@ Esse projeto foi MUITO importante pra mim, principalmente em:
 ## 🌐 Acesso ao site
 
 <p align="center">
-  <a href="https://www.comuta.com.br"><img src="https://img.shields.io/badge/Acessar%20Site-f97316?style=for-the-badge&logo=google-chrome&logoColor=white"/></a>
+  <a href="https://www.comuta.com.br" target="_blank""><img src="https://img.shields.io/badge/Acessar%20Site-f97316?style=for-the-badge&logo=google-chrome&logoColor=white"/></a>
 </p>
 
 👉 https://www.comuta.com.br
