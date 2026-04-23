@@ -143,8 +143,8 @@ Esse projeto marcou uma evolução importante na minha jornada, principalmente p
 Estagiária em Marketing • Multimídia • ADS (FIAP)  
 
 <p align="center">
-  <a href="mailto:manuelalimramos@hotmail.com">📧 Email</a> •
-  <a href="https://linkedin.com/in/manuelalramos">💼 LinkedIn</a>
+  <a href="mailto:manuelalimramos@hotmail.com" target="_blank">📧 Email</a> •
+  <a href="https://linkedin.com/in/manuelalramos" target="_blank">💼 LinkedIn</a>
 </p>
 
 ---
