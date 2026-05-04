@@ -1,44 +1,155 @@
-# Comuta Site
+<!-- HEADER COM IDENTIDADE VISUAL -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:f97316,100:fb923c&height=160&section=header&text=Comuta%20Reformas&fontSize=32&fontColor=ffffff&animation=fadeIn"/>
+</p>
 
-Projeto estático com páginas e blocos em HTML para diferentes áreas do site da Comuta e do Instituto Comuta.
+<h2 align="center">🏗️ Desenvolvimento Web • Design • Experiência do Usuário</h2>
 
-## Estrutura
+<p align="center">
+Projeto desenvolvido durante minha atuação como estagiária no <b>Comuta Reformas</b>
+</p>
 
-- `home/`: seções da página inicial.
-- `servicos/`: blocos e páginas da área de serviços.
-- `quem somos/`: conteúdo institucional e parceiros.
-- `vagas/`: páginas de vagas e recrutamento.
-- `contato/`: formulário e informações de contato.
-- `instituto/`: páginas do Instituto Comuta.
-- `Institutos/`: blocos institucionais complementares.
+---
 
-## Tecnologias
+## 🧡 Sobre o projeto
 
-- HTML
-- CSS inline
-- JavaScript inline
+Durante minha experiência no **Comuta Reformas**, fui responsável por **criar e atualizar o site institucional**, com foco em:
 
-## Como visualizar
+- Melhorar a experiência do usuário  
+- Modernizar o visual  
+- Organizar melhor as informações  
+- Tornar o site mais responsivo  
 
-Por ser um projeto estático, basta abrir os arquivos `.html` no navegador ou publicar a pasta em qualquer hospedagem de arquivos estáticos.
+Como o site foi feito em **Wix**, precisei contornar limitações da plataforma, desenvolvendo partes em código e integrando manualmente.
 
-## Organização do código
+---
 
-O projeto foi limpo para facilitar versionamento e manutenção:
+## 🎯 Objetivo
 
-- comentários removidos dos arquivos HTML
-- blocos CSS e JavaScript inline mantidos sem anotações extras
-- espaçamentos excessivos reduzidos
+Criar um site mais:
 
-## Publicação no GitHub
+🟧 Moderno  
+🟧 Intuitivo  
+🟧 Responsivo  
+🟧 Alinhado com a identidade da marca  
 
-Se quiser subir esta pasta como repositório:
+---
 
-```bash
-git init
-git add .
-git commit -m "feat: adiciona projeto do site"
-git branch -M main
-git remote add origin SEU_REPOSITORIO
-git push -u origin main
-```
+## ⚙️ Tecnologias utilizadas
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,vscode" />
+</p>
+
+<p align="center">
+Wix • HTML Embed • Custom Code • UI/UX Design
+</p>
+
+---
+
+## 🧩 O que foi desenvolvido
+
+<p>🟧 Estruturação de páginas (Home, Serviços, etc.) <br>
+🟧 Componentes reutilizáveis  <br>
+🟧 Ajustes de responsividade (mobile-first) <br>  
+🟧 Refinamento visual (cores, tipografia, layout) <br>
+🟧 Integração com <strong>Wix</strong> <br>
+🟧 Organização de conteúdo institucional</p>
+
+---
+
+## 🎨 Identidade visual
+
+O projeto segue a identidade da marca:
+
+🟧 **Cor principal:** Laranja  
+⚪ **Base:** Clean / branco  
+⬛ **Apoio:** Preto e cinza  
+
+💡 Foco em:
+- Leitura fácil  
+- Destaque para serviços  
+- Visual moderno e direto  
+- Experiência fluida entre desktop e mobile  
+
+
+---
+
+## 🧠 Aprendizados
+
+Esse projeto foi MUITO importante pra mim, principalmente em:
+
+- Trabalhar com limitações reais de plataforma (Wix)
+- Pensar UI/UX na prática
+- Conectar design com código
+- Resolver problemas de responsividade
+- Organização de front-end
+
+---
+
+## 🌐 Acesso ao site
+
+<p align="center">
+  <a href="https://www.comuta.com.br" target="_blank""><img src="https://img.shields.io/badge/Acessar%20Site-f97316?style=for-the-badge&logo=google-chrome&logoColor=white"/></a>
+</p>
+
+👉 https://www.comuta.com.br
+
+---
+
+## 📁 Estrutura do projeto
+<p>
+📦 comuta-arquitetura <br>
+┣ 📂 pages <br>
+┃ ┣ 📄 home.html <br>
+┃ ┣ 📄 servicos.html <br>
+┃ ┗ 📄 contato.html <br>
+┣ 📂 components <br>
+┃ ┣ 📄 header <br>
+┃ ┣ 📄 footer <br>
+┃ ┗ 📄 cards <br>
+┣ 📂 styles <br>
+┃ ┗ 📄 style.css <br>
+┣ 📂 scripts <br>
+┃ ┗ 📄 main.js  <br>
+</p>
+
+
+---
+
+## 💬 Desafio técnico
+
+O maior desafio foi **adaptar código personalizado dentro do Wix**, mantendo:
+
+- Performance  
+- Responsividade  
+- Consistência visual  
+
+---
+
+## 🚀 Considerações finais
+
+Esse projeto marcou uma evolução importante na minha jornada, principalmente por unir:
+
+💡 Design  
+💻 Desenvolvimento  
+📈 Pensamento estratégico  
+
+---
+
+## 👩‍💻 Autora
+
+**Manuela Ramos**  
+Estagiária em Marketing • Multimídia • ADS (FIAP)  
+
+<p align="center">
+  <a href="mailto:manuelalimramos@hotmail.com" target="_blank">📧 Email</a> •
+  <a href="https://linkedin.com/in/manuelalramos" target="_blank">💼 LinkedIn</a>
+</p>
+
+---
+
+<!-- FOOTER -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF6A00,100:FF8C42&height=120&section=footer"/>
+</p>
