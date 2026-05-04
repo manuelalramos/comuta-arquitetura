@@ -285,7 +285,8 @@
 
     /* Em telas touch nao existe hover confiavel.
        Aqui o conteudo e o gradiente ficam visiveis por padrao. */
-    @media (hover: none), (pointer: coarse) {
+    @media (hover: none),
+    (pointer: coarse) {
       .showcase__shade {
         opacity: 1;
         transform: translateY(0);
@@ -414,7 +415,7 @@
     </div>
 
     <div class="showcase__footer">
-      <a class="showcase__link" href="pagina-projetos-comuta.html">
+      <a class="showcase__link" href="https://www.institutocomuta.org.br/projetos" target="_top" rel="noopener">
         Ver mais projetos
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M5 12h14" />
