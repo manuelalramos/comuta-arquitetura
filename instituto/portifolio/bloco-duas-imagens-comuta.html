@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+  <title>Projetos em Destaque | Instituto Comuta</title>
+  <style>
+    /* Base do bloco */
+    :root {
+      --surface: #ffffff;
+      --ink: #152033;
+      --line: rgba(21, 32, 51, 0.1);
+      /* Sombra principal dos cards */
+      --shadow: 0 22px 54px rgba(15, 23, 42, 0.16);
+      --button-bg: rgba(255, 255, 255, 0.96);
+      --button-text: #12347b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--ink);
+      font-family: "Funnel Display", Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Container principal */
+    .showcase {
+      width: min(1280px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    /* Composicao das duas imagens */
+    .showcase__stage {
+      position: relative;
+      min-height: 660px;
+    }
+
+    .showcase__card {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 34px;
+      background: #dde4ec;
+      /* box-shadow: var(--shadow); */
+      isolation: isolate;
+    }
+
+    .showcase__card--large {
+      left: 0;
+      top: 0;
+      width: 61%;
+      height: 610px;
+    }
+
+    .showcase__card--small {
+      right: 0;
+      bottom: 68px;
+      width: 41%;
+      height: 470px;
+    }
+
+    .showcase__image,
+    .showcase__image img,
+    .showcase__shade {
+      position: absolute;
+      inset: 0;
+    }
+
+    .showcase__image img {
+      transform: scale(1);
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    /* Gradiente preto para transparente, direto na imagem */
+    .showcase__shade {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 32%, rgba(0, 0, 0, 0.16) 60%, rgba(0, 0, 0, 0) 82%);
+      opacity: 0;
+      transform: translateY(32%);
+      transition: opacity 0.72s ease, transform 0.96s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    /* Conteudo do hover: titulo, texto e botao entram como um grupo so */
+    .showcase__content {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      z-index: 2;
+      color: #ffffff;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.64s ease 0.08s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .showcase__title {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 3.5rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .showcase__card--small .showcase__title {
+      font-size: clamp(1.4rem, 2vw, 2.5rem);
+    }
+
+    .showcase__text {
+      max-width: 420px;
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .showcase__button,
+    .showcase__link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: var(--button-bg);
+      color: var(--button-text);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: background 0.38s ease, color 0.38s ease, border-color 0.38s ease, box-shadow 0.38s ease, transform 0.38s ease;
+    }
+
+    .showcase__button:hover,
+    .showcase__button:focus-visible,
+    .showcase__link:hover,
+    .showcase__link:focus-visible {
+      border-color: rgba(217, 238, 251, 0.96);
+      background: #d9eefb;
+      color: #12347b;
+      box-shadow: 0 10px 24px rgba(10, 29, 73, 0.16);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .showcase__button svg,
+    .showcase__link svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
+    }
+
+    /* Hover leve: nada de pulo, nada de caixa extra */
+    .showcase__card:hover .showcase__shade,
+    .showcase__card:focus-within .showcase__shade {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .showcase__card:hover .showcase__image img,
+    .showcase__card:focus-within .showcase__image img {
+      transform: scale(1.018);
+    }
+
+    .showcase__card:hover .showcase__content,
+    .showcase__card:focus-within .showcase__content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Foto do meio */
+    .showcase__avatar {
+      position: absolute;
+      left: 58.6%;
+      top: 54.2%;
+      z-index: 3;
+      width: 102px;
+      height: 102px;
+      overflow: hidden;
+      border: 8px solid #ffffff;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      background: #f3f5f8;
+      /* Sombra da foto central */
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+    }
+
+    /* Botao final */
+    .showcase__footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .showcase__link {
+      border-color: var(--line);
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    @media (max-width: 900px) {
+      .showcase {
+        width: min(100% - 24px, 1280px);
+        padding: 16px 0 30px;
+      }
+
+      .showcase__stage {
+        display: grid;
+        grid-template-areas:
+          "primeiro"
+          "foto"
+          "segundo";
+        gap: 0;
+        min-height: 0;
+        padding-bottom: 0;
+      }
+
+      .showcase__card,
+      .showcase__card--large,
+      .showcase__card--small {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: 430px;
+      }
+
+      .showcase__card--large {
+        grid-area: primeiro;
+      }
+
+      .showcase__card--small {
+        grid-area: segundo;
+      }
+
+      .showcase__shade {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .showcase__content {
+        opacity: 1;
+        transform: none;
+      }
+
+      .showcase__avatar {
+        position: relative;
+        grid-area: foto;
+        left: auto;
+        top: auto;
+        width: 84px;
+        height: 84px;
+        margin: -18px auto;
+        border-width: 6px;
+        transform: none;
+      }
+
+      .showcase__footer {
+        margin-top: 24px;
+      }
+    }
+
+    /* Em telas touch nao existe hover confiavel.
+       Aqui o conteudo e o gradiente ficam visiveis por padrao. */
+    @media (hover: none), (pointer: coarse) {
+      .showcase__shade {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .showcase__content {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .showcase__card,
+      .showcase__card--large,
+      .showcase__card--small {
+        height: 420px;
+        border-radius: 24px;
+      }
+
+      .showcase__content {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .showcase__title {
+        margin-bottom: 7px;
+        font-size: clamp(1.42rem, 7.2vw, 1.82rem);
+        line-height: 0.98;
+      }
+
+      .showcase__card--small .showcase__title {
+        font-size: clamp(1.3rem, 6.8vw, 1.62rem);
+      }
+
+      .showcase__text {
+        max-width: 94%;
+        margin-bottom: 12px;
+        font-size: clamp(0.76rem, 3.55vw, 0.84rem);
+        line-height: 1.3;
+        overflow-wrap: break-word;
+        text-wrap: pretty;
+      }
+
+      .showcase__button,
+      .showcase__link {
+        width: 100%;
+        min-height: 42px;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+      }
+
+      .showcase__avatar {
+        width: 74px;
+        height: 74px;
+        margin: -16px auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="showcase" aria-label="Projetos em destaque do Instituto Comuta">
+    <div class="showcase__stage">
+      <article class="showcase__card showcase__card--large" tabindex="0">
+        <div class="showcase__image" aria-hidden="true">
+          <img
+            src="https://static.wixstatic.com/media/e39337_1aa912a3147942e6a3a2f76c9639d254~mv2.jpg/v1/fill/w_980,h_573,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e39337_1aa912a3147942e6a3a2f76c9639d254~mv2.jpg"
+            alt="" />
+        </div>
+        <div class="showcase__shade" aria-hidden="true"></div>
+        <div class="showcase__content">
+          <h2 class="showcase__title">Melhoria Habitacional</h2>
+          <p class="showcase__text">
+            Reformas essenciais para que familias vivam com mais seguranca,
+            conforto e dignidade dentro de casa.
+          </p>
+          <a class="showcase__button" href="https://www.institutocomuta.org.br/solu%C3%A7%C3%B5es" target="_blank"
+            rel="noopener">
+            Ver projeto
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="showcase__card showcase__card--small" tabindex="0">
+        <div class="showcase__image" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85"
+            alt="" />
+        </div>
+        <div class="showcase__shade" aria-hidden="true"></div>
+        <div class="showcase__content">
+          <h2 class="showcase__title">Articulacao Social</h2>
+          <p class="showcase__text">
+            Parcerias com comunidades e organizacoes para transformar recursos
+            em impacto concreto nos territorios.
+          </p>
+          <a class="showcase__button" href="https://www.institutocomuta.org.br/contato" target="_blank" rel="noopener">
+            Ver projeto
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Troque so o src abaixo para colocar a sua foto no circulo central -->
+      <div class="showcase__avatar" aria-hidden="true">
+        <img src="https://static.wixstatic.com/shapes/e39337_116ebe16c998439087f5998f1511f6a5.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="showcase__footer">
+      <a class="showcase__link" href="pagina-projetos-comuta.html">
+        Ver mais projetos
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14" />
+          <path d="m13 6 6 6-6 6" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</body>
+
+</html>
