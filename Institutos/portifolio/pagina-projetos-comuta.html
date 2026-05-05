@@ -1,16 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
-
-  <title>Projetos | Instituto Comuta</title>
+  <title>Projetos por Parceiros | Instituto Comuta</title>
   <style>
-    /* Base da pagina */
     :root {
       --surface: #ffffff;
       --surface-soft: #f5f7fa;
@@ -19,34 +16,39 @@
       --line: rgba(21, 32, 51, 0.1);
       --accent: #1a56cd;
       --accent-soft: #d9eefb;
-      /* Sombra principal dos cards */
       --shadow: 0 22px 50px rgba(15, 23, 42, 0.12);
-      /* Gradiente preto na base da imagem; ele cresce no hover */
       --card-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.58) 34%, rgba(0, 0, 0, 0.18) 62%, rgba(0, 0, 0, 0) 84%);
-      --card-hover-lift: clamp(118px, 10vw, 132px);
+      --card-hover-lift: clamp(116px, 9vw, 136px);
+
+      /* CONTROLES PRINCIPAIS:
+         - Aumente este tempo para a rolagem ficar MAIS lenta.
+         - Diminua este tempo para a rolagem ficar MAIS rápida. */
+      --partners-scroll-duration: 15s;
+
+      /* CONTROLES DAS LOGOS DENTRO DOS CARDS:
+         - width/height definem a caixa igual para todas.
+         - scale aumenta ou diminui a arte da logo dentro dessa caixa.
+         - gap controla a distancia entre a logo e o titulo. */
+      --project-card-logo-width: 186px;
+      --project-card-logo-height: 62px;
+      --project-card-logo-scale: 1.72;
+      --project-card-logo-gap: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
+      overflow-x: hidden;
       background: var(--surface);
       color: var(--ink);
       font-family: "Funnel Display", Arial, sans-serif;
       line-height: 1.45;
-      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     img {
       display: block;
@@ -55,19 +57,16 @@
       object-fit: cover;
     }
 
-    /* Estrutura */
-    .projects-page {
-      min-height: 100vh;
-    }
+    .projects-page { min-height: 100vh; }
 
     .projects-shell {
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    /* Topo */
+    /* Cabecalho da pagina */
     .projects-header {
-      padding: 52px 0 30px;
+      padding: 52px 0 34px;
       border-bottom: 1px solid var(--line);
     }
 
@@ -110,7 +109,7 @@
     }
 
     .projects-button,
-    .projects-card__button {
+    .project-card__button {
       display: inline-flex;
       min-height: 44px;
       align-items: center;
@@ -128,8 +127,8 @@
 
     .projects-button:hover,
     .projects-button:focus-visible,
-    .projects-card__button:hover,
-    .projects-card__button:focus-visible {
+    .project-card__button:hover,
+    .project-card__button:focus-visible {
       border-color: rgba(217, 238, 251, 0.96);
       background: #d9eefb;
       color: var(--accent);
@@ -139,8 +138,7 @@
     }
 
     .projects-button svg,
-    .projects-card__button svg,
-    .projects-rail__button svg {
+    .project-card__button svg {
       width: 18px;
       height: 18px;
       stroke: currentColor;
@@ -155,8 +153,7 @@
       align-items: end;
     }
 
-    .projects-header__eyebrow,
-    .projects-rail__eyebrow {
+    .projects-eyebrow {
       margin: 0 0 12px;
       color: var(--accent);
       font-size: 0.78rem;
@@ -165,14 +162,10 @@
       text-transform: uppercase;
     }
 
-    h1,
-    h2,
-    p {
-      margin-top: 0;
-    }
+    h1, h2, h3, p { margin-top: 0; }
 
     .projects-header__title {
-      max-width: 720px;
+      max-width: 760px;
       margin-bottom: 0;
       font-size: clamp(2.7rem, 6vw, 5.4rem);
       line-height: 0.94;
@@ -185,177 +178,218 @@
       font-size: clamp(1rem, 1.45vw, 1.18rem);
     }
 
-    /* Galeria */
-    .projects-rail {
-      padding: 34px 0 84px;
+    /* Faixa continua de logos dos parceiros */
+    .partners-strip {
+      padding: 30px 0 24px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .projects-rail__top {
+    .partners-strip__intro {
       display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 18px;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
     }
 
-    .projects-rail__line {
-      position: relative;
-      flex: 1;
-      height: 2px;
+    .partners-strip__title {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(1.55rem, 2.4vw, 2.4rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .partners-strip__hint {
+      max-width: 360px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    .partners-marquee {
+      width: 100%;
       overflow: hidden;
-      background: var(--accent-soft);
+      padding: 8px 0;
     }
 
-    .projects-rail__progress {
-      width: 25%;
-      height: 100%;
-      background: var(--accent);
-      transform: translateX(0);
-      transition: transform 0.4s ease;
+    .partners-marquee__track {
+      display: flex;
+      width: max-content;
+      gap: 16px;
+      animation: partners-scroll var(--partners-scroll-duration) linear infinite;
     }
 
-    .projects-rail__tools {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--ink);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
+    .partners-marquee__track:has(.partner-logo:hover),
+    .partners-marquee__track:has(.partner-logo:focus-visible) {
+      animation-play-state: paused;
     }
 
-    .projects-rail__button {
-      width: 40px;
-      height: 40px;
+    .partner-logo {
+      width: 176px;
+      min-height: 90px;
       display: grid;
       place-items: center;
-      border-radius: 999px;
+      padding: 18px 24px;
       border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--ink);
-      cursor: pointer;
-      transition: background 0.38s ease, border-color 0.38s ease, color 0.38s ease;
+      border-radius: 999px;
+      background: #ffffff;
+      transition: transform 0.72s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.56s ease, box-shadow 0.56s ease;
     }
 
-    .projects-rail__button:hover,
-    .projects-rail__button:focus-visible {
+    .partner-logo:hover,
+    .partner-logo:focus-visible {
+      z-index: 2;
       border-color: rgba(26, 86, 205, 0.22);
-      background: rgba(245, 247, 250, 0.98);
-      color: var(--accent);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+      transform: scale(1.045);
       outline: none;
     }
 
-    .projects-rail__scroller {
+    .partner-logo img {
+      width: 100%;
+      height: 46px;
+      object-fit: contain;
+      transform: scale(var(--partner-logo-scale, 1.42));
+      transform-origin: center;
+    }
+
+    /* Ajustes da faixa de parceiros: compensam logos com respiro interno no PNG. */
+    .partner-logo--gerando { --partner-logo-scale: 1.74; }
+    .partner-logo--cyrela { --partner-logo-scale: 1.48; }
+    .partner-logo--leroy { --partner-logo-scale: 1.34; }
+    .partner-logo--votorantim { --partner-logo-scale: 1.64; }
+    .partner-logo--habitat { --partner-logo-scale: 1.48; }
+    .partner-logo--galli { --partner-logo-scale: 1.32; }
+    .partner-logo--rede { --partner-logo-scale: 1.34; }
+    .partner-logo--viscofan { --partner-logo-scale: 1.42; }
+
+    @keyframes partners-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 8px)); }
+    }
+
+    /* Cards de projetos por parceiro */
+    .projects-list { padding: 40px 0 86px; }
+
+    .projects-list__top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .projects-list__title {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 3rem);
+      line-height: 1;
+    }
+
+    .projects-grid {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(420px, 36%);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
-      overflow-x: auto;
-      overscroll-behavior-inline: contain;
-      scroll-snap-type: inline mandatory;
-      padding: 8px 0 28px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent) var(--accent-soft);
     }
 
-    .projects-rail__scroller::-webkit-scrollbar {
-      height: 9px;
-    }
-
-    .projects-rail__scroller::-webkit-scrollbar-track {
-      background: var(--accent-soft);
-    }
-
-    .projects-rail__scroller::-webkit-scrollbar-thumb {
-      background: var(--accent);
-    }
-
-    /* Cards dos projetos */
-    .projects-card {
+    .project-card {
       position: relative;
-      min-height: clamp(430px, 42vw, 540px);
+      min-height: 500px;
       overflow: hidden;
       border-radius: 30px;
       background: #dbe3eb;
       box-shadow: var(--shadow);
       isolation: isolate;
-      scroll-snap-align: start;
     }
 
-    .projects-card__image,
-    .projects-card__image img,
-    .projects-card__shade {
+    .project-card__image,
+    .project-card__image img,
+    .project-card__shade {
       position: absolute;
       inset: 0;
     }
 
-    .projects-card__image img {
+    .project-card__image img {
       transform: scale(1);
-      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 1.18s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
     }
 
-    /* Gradiente da leitura: pequeno no repouso, maior quando o texto abre */
-    .projects-card__shade {
+    .project-card__shade {
       background: var(--card-gradient);
       opacity: 0.36;
       transform: translateY(46%);
-      transition: opacity 0.72s ease, transform 0.96s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.9s ease, transform 1.12s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
-    .projects-card__number {
+    .project-card__content {
       position: absolute;
-      top: 22px;
-      right: 22px;
-      z-index: 3;
-      display: grid;
-      width: 48px;
-      height: 48px;
-      place-items: center;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
-      font-size: 0.94rem;
-      font-weight: 800;
-    }
-
-    /* Bloco unico do hover:
-       - no repouso, so o titulo aparece la embaixo;
-       - no hover/foco, o bloco sobe e revela descricao + botao juntos. */
-    .projects-card__content {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 34px;
+      left: 26px;
+      right: 26px;
+      bottom: 42px;
       z-index: 2;
       color: #ffffff;
       transform: translateY(0);
-      transition: transform 0.94s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 1.08s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
     }
 
-    .projects-card__title {
-      max-width: 400px;
+    /* Logo branca do parceiro: posicao unica em todos os cards */
+    .project-card__partner {
+      width: var(--project-card-logo-width);
+      height: var(--project-card-logo-height);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      margin: 0 0 var(--project-card-logo-gap);
+      padding: 0;
+      background: transparent;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .project-card__partner img {
+      display: block;
+      width: var(--project-card-logo-width);
+      height: var(--project-card-logo-height);
+      object-fit: contain;
+      object-position: left bottom;
+      filter: brightness(0) saturate(100%) invert(1) grayscale(1) contrast(1.85);
+      transform: scale(var(--project-card-logo-scale));
+      transform-origin: left bottom;
+    }
+
+    /* Ajustes finos por logo: use apenas se algum PNG vier com muito espaco transparente interno. */
+    .project-card__partner--gerando { --project-card-logo-scale: 2.18; }
+    .project-card__partner--cyrela { --project-card-logo-scale: 1.88; }
+    .project-card__partner--leroy { --project-card-logo-scale: 1.72; }
+    .project-card__partner--votorantim { --project-card-logo-scale: 1.78; }
+    .project-card__partner--habitat { --project-card-logo-scale: 1.7; }
+    .project-card__partner--galli { --project-card-logo-scale: 1.62; }
+    .project-card__partner--rede { --project-card-logo-scale: 1.68; }
+    .project-card__partner--viscofan { --project-card-logo-scale: 1.72; }
+
+    .project-card__title {
+      max-width: 430px;
       margin: 0;
-      font-size: clamp(1.8rem, 2.4vw, 2.8rem);
-      line-height: 1.02;
+      font-size: clamp(1.9rem, 2.8vw, 3.2rem);
+      line-height: 1;
       letter-spacing: 0;
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
     }
 
-    /* No estado normal fica so o titulo; no hover entram descricao e botao */
-    .projects-card__details {
+    .project-card__details {
       position: absolute;
       display: grid;
       gap: 14px;
       left: 0;
       right: 0;
       top: calc(100% + 14px);
-      max-width: 420px;
-      margin-top: 0;
+      max-width: 460px;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -363,18 +397,25 @@
       transition: opacity 0.64s ease 0.12s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, visibility 0s linear 0.64s;
     }
 
-    .projects-card__details p {
+    .project-card__company {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .project-card__text {
       margin: 0;
       color: rgba(255, 255, 255, 0.88);
-      font-size: 0.96rem;
+      font-size: 0.98rem;
     }
 
-    .projects-card__button {
-      width: fit-content;
-    }
+    .project-card__button { width: fit-content; }
 
-    .projects-card:hover .projects-card__details,
-    .projects-card:focus-within .projects-card__details {
+    .project-card:hover .project-card__details,
+    .project-card:focus-within .project-card__details {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
@@ -382,111 +423,75 @@
       transition: opacity 0.64s ease 0.12s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, visibility 0s linear 0s;
     }
 
-    .projects-card:hover .projects-card__shade,
-    .projects-card:focus-within .projects-card__shade {
+    .project-card:hover .project-card__shade,
+    .project-card:focus-within .project-card__shade {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .projects-card:hover .projects-card__image img,
-    .projects-card:focus-within .projects-card__image img {
-      transform: scale(1.022);
-    }
+    .project-card:hover .project-card__image img,
+    .project-card:focus-within .project-card__image img { transform: scale(1.022); }
 
-    .projects-card:hover .projects-card__content,
-    .projects-card:focus-within .projects-card__content {
-      transform: translateY(calc(var(--card-hover-lift) * -1));
-    }
-
-    .projects-footer {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding-top: 26px;
-      border-top: 1px solid var(--line);
-    }
-
-    .projects-footer p {
-      max-width: 560px;
-      margin: 0;
-      color: var(--ink-soft);
-    }
+    .project-card:hover .project-card__content,
+    .project-card:focus-within .project-card__content { transform: translateY(calc(var(--card-hover-lift) * -1)); }
 
     @media (max-width: 860px) {
       .projects-shell {
         width: min(calc(100vw - 24px), 1180px);
-        overflow: hidden;
       }
 
-      .projects-header {
-        padding: 34px 0 28px;
-      }
+      .projects-header { padding: 34px 0 28px; }
 
       .projects-header__copy {
         grid-template-columns: 1fr;
         gap: 22px;
       }
 
-      .projects-header__title,
-      .projects-card__title {
+            .projects-header__title,
+      .projects-header__text,
+      .partners-strip__title,
+      .partners-strip__hint,
+      .projects-list__title {
         max-width: 100%;
         overflow-wrap: break-word;
         text-wrap: balance;
       }
 
-      /* Mobile: sem carrossel falso. Os cards viram uma lista vertical. */
-      .projects-rail {
-        padding: 30px 0 56px;
+      .partners-strip { padding: 26px 0 22px; }
+      .partners-strip__intro { align-items: start; }
+
+      .partner-logo {
+        width: 150px;
+        min-height: 78px;
+        padding: 15px 20px;
       }
 
-      .projects-rail__top {
-        display: block;
-        margin-bottom: 18px;
-      }
+      .partner-logo img { height: 40px; }
 
-      .projects-rail__line,
-      .projects-rail__tools {
-        display: none;
-      }
+      .projects-list { padding: 32px 0 58px; }
 
-      .projects-rail__scroller {
-        display: grid;
-        grid-auto-flow: row;
-        grid-auto-columns: initial;
+      .projects-grid {
         grid-template-columns: 1fr;
-        width: 100%;
-        gap: 22px;
-        overflow: visible;
-        scroll-snap-type: none;
-        padding: 0;
-        scrollbar-width: none;
+        gap: 18px;
       }
 
-      .projects-rail__scroller::-webkit-scrollbar {
-        display: none;
-      }
-
-      .projects-card {
+      .project-card {
         width: 100%;
         min-height: 540px;
         border-radius: 24px;
-        scroll-snap-align: none;
       }
 
-      /* Mobile real: o conteudo fica aberto sem depender de hover. */
-      .projects-card__shade {
+      .project-card__shade {
         opacity: 1;
         transform: translateY(0);
       }
 
-      .projects-card__content {
+      .project-card__content {
         max-width: calc(100vw - 60px);
         transform: none;
       }
 
-      .projects-card__details {
+      .project-card__details {
         max-width: 100%;
         position: static;
         margin-top: 14px;
@@ -495,26 +500,17 @@
         pointer-events: auto;
         transform: none;
       }
-
-      .projects-card__details p {
-        max-width: 100%;
-      }
-
     }
 
-    /* Em telas touch nao existe hover confiavel.
-       Aqui o gradiente, a descricao e o botao ficam visiveis por padrao. */
     @media (hover: none), (pointer: coarse) {
-      .projects-card__shade {
+      .project-card__shade {
         opacity: 1;
         transform: translateY(0);
       }
 
-      .projects-card__content {
-        transform: none;
-      }
+      .project-card__content { transform: none; }
 
-      .projects-card__details {
+      .project-card__details {
         position: static;
         margin-top: 14px;
         opacity: 1;
@@ -525,60 +521,69 @@
     }
 
     @media (max-width: 520px) {
+      .projects-header__bar { margin-bottom: 26px; }
+
       .projects-header__title {
         font-size: clamp(2.05rem, 11vw, 2.9rem);
         line-height: 0.98;
       }
 
-      .projects-header__text {
+      .projects-header__text,
+      .partners-strip__hint {
+        max-width: 31ch;
         font-size: 1rem;
         line-height: 1.45;
       }
 
-      .projects-rail__eyebrow {
-        margin-bottom: 0;
+      .partners-strip__title,
+      .projects-list__title { font-size: clamp(1.45rem, 8vw, 2rem); }
+
+      .partners-marquee__track {
+        gap: 12px;
       }
 
-      .projects-rail__scroller {
-        gap: 18px;
+      .partner-logo {
+        width: 132px;
+        min-height: 70px;
+        padding: 14px 18px;
       }
 
-      .projects-card {
-        min-height: 540px;
-      }
+      .partner-logo img { height: 34px; }
 
-      .projects-card__title {
-        font-size: clamp(1.42rem, 6.8vw, 1.78rem);
-        line-height: 1;
-      }
+      .project-card { min-height: 540px; }
 
-      .projects-card__content {
+      .project-card__content {
         left: 18px;
         right: 18px;
-        bottom: 18px;
+        bottom: 30px;
       }
 
-      .projects-card__details p {
+      .project-card__partner {
+        width: var(--project-card-logo-width);
+        height: var(--project-card-logo-height);
+        margin-bottom: var(--project-card-logo-gap);
+      }
+
+      .project-card__title {
+        max-width: 100%;
+        font-size: clamp(1.42rem, 6.8vw, 1.78rem);
+        line-height: 1;
+        overflow-wrap: break-word;
+        text-wrap: balance;
+      }
+
+      .project-card__details { gap: 12px; }
+      .project-card__company { font-size: 0.84rem; }
+
+      .project-card__text {
         font-size: clamp(0.82rem, 3.8vw, 0.92rem);
         line-height: 1.34;
         overflow-wrap: break-word;
         text-wrap: pretty;
       }
 
-      .projects-card__details {
-        gap: 12px;
-      }
-
-      .projects-card__number {
-        top: 18px;
-        right: 18px;
-        width: 42px;
-        height: 42px;
-        font-size: 0.84rem;
-      }
-
       .projects-button,
-      .projects-card__button {
+      .project-card__button {
         width: 100%;
         min-height: 42px;
         padding: 10px 14px;
@@ -587,208 +592,178 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      * ,
-      *::before,
-      *::after {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+      }
+
+      /* Mantem a faixa de logos lenta mesmo se o navegador estiver em reduzir movimento. */
+      .partners-marquee__track {
+        animation-duration: var(--partners-scroll-duration) !important;
       }
     }
   </style>
 </head>
+
 <body>
   <main class="projects-page">
     <header class="projects-header">
       <div class="projects-shell">
         <div class="projects-header__bar">
           <div class="projects-brand" aria-label="Instituto Comuta">
-          
+            </span>
           </div>
-          <a class="projects-button" href="https://www.institutocomuta.org.br/contato" target="_blank" rel="noopener">
-            Propor parceria
-          </a>
+          <a class="projects-button" href="#projetos-por-parceiro">Propor parceria</a>
         </div>
 
         <div class="projects-header__copy">
           <div>
-            <p class="projects-header__eyebrow">Projetos</p>
-            <h1 class="projects-header__title">Moradia digna em movimento.</h1>
+            <p class="projects-eyebrow">Projetos</p>
+            <h1 class="projects-header__title">Projetos com parceiros que transformam moradias.</h1>
           </div>
           <p class="projects-header__text">
-            Uma seleção de frentes de atuação que conectam diagnóstico, reforma,
-            adaptação climática e articulação social nos territórios.
+            Navegue pelos parceiros do Instituto Comuta e acesse os projetos realizados em cada frente de atuação.
           </p>
         </div>
       </div>
     </header>
 
-    <section class="projects-rail" aria-label="Portifolio de projetos do Instituto Comuta">
+    <section class="partners-strip" aria-label="Acesse os projetos pelas empresas parceiras">
       <div class="projects-shell">
-        <div class="projects-rail__top">
-          <p class="projects-rail__eyebrow">Projetos</p>
-          <div class="projects-rail__line" aria-hidden="true">
-            <div class="projects-rail__progress"></div>
+        <div class="partners-strip__intro">
+          <div>
+            <p class="projects-eyebrow">Parceiros</p>
+            <h2 class="partners-strip__title">Acesse os projetos pelas empresas aqui.</h2>
           </div>
-          <nav class="projects-rail__tools" aria-label="Navegacao da galeria">
-            <span>Projetos</span>
-            <button class="projects-rail__button" type="button" data-direction="-1" aria-label="Projeto anterior">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M15 18 9 12l6-6" />
-              </svg>
-            </button>
-            <button class="projects-rail__button" type="button" data-direction="1" aria-label="Proximo projeto">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
-          </nav>
+          <p class="partners-strip__hint">Passe o mouse para pausar a rolagem e clique em uma logo para ir direto ao projeto.</p>
+        </div>
+      </div>
+
+      <div class="partners-marquee">
+        <div class="partners-marquee__track" aria-label="Logos de parceiros em rolagem contínua">
+          <a class="partner-logo partner-logo--gerando" href="#projeto-gerando-falcoes" aria-label="Projetos Gerando Falcões"><img src="https://static.wixstatic.com/media/e39337_d2646d290b0648079b93a550fa9a4825~mv2.png" alt="Gerando Falcões" /></a>
+
+          <a class="partner-logo partner-logo--cyrela" href="#projeto-cyrela" aria-label="Projetos Cyrela"><img src="https://static.wixstatic.com/media/e39337_8748083cda4043e6a857d0112bd961b7~mv2.png" alt="Cyrela" /></a>
+
+          <a class="partner-logo partner-logo--leroy" href="#projeto-leroy-merlin" aria-label="Projetos Leroy Merlin"><img src="https://static.wixstatic.com/media/e39337_1c83be39319c4601aee675e40739c2ac~mv2.png" alt="Leroy Merlin" /></a>
+
+          <a class="partner-logo partner-logo--votorantim" href="#projeto-votorantim" aria-label="Projetos Votorantim"><img src="https://static.wixstatic.com/media/e39337_1e5f2750b088491793096eddb487ead3~mv2.png" alt="Votorantim" /></a>
+
+          <a class="partner-logo partner-logo--habitat" href="#projeto-habitat" aria-label="Projetos Habitat"><img src="https://static.wixstatic.com/media/e39337_18a525574391456aa40923c447fbe7f1~mv2.png" alt="Habitat" /></a>
+
+          <a class="partner-logo partner-logo--galli" href="#projeto-galli" aria-label="Projetos Galli"><img src="https://static.wixstatic.com/media/e39337_73f5505eab56426eb43ed29445448e69~mv2.png" alt="Galli" /></a>
+
+          <a class="partner-logo partner-logo--rede" href="#projeto-rede-transformar" aria-label="Projetos Rede Transformar"><img src="https://static.wixstatic.com/media/e39337_2618804240e24ed6bcb4673a1a790093~mv2.png" alt="Rede Transformar" /></a>
+
+          <a class="partner-logo partner-logo--viscofan" href="#projeto-viscofan" aria-label="Projetos Viscofan"><img src="https://static.wixstatic.com/media/e39337_154d94180e8d47549ea5ecebd269a17e~mv2.png" alt="Viscofan" /></a>
+
+          <a class="partner-logo partner-logo--gerando" href="#projeto-gerando-falcoes" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_d2646d290b0648079b93a550fa9a4825~mv2.png" alt="" /></a>
+
+          <a class="partner-logo partner-logo--cyrela" href="#projeto-cyrela" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_8748083cda4043e6a857d0112bd961b7~mv2.png" alt="" /></a>
+
+          <a class="partner-logo partner-logo--leroy" href="#projeto-leroy-merlin" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_1c83be39319c4601aee675e40739c2ac~mv2.png" alt="" /></a>
+
+          <a class="partner-logo partner-logo--votorantim" href="#projeto-votorantim" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_1e5f2750b088491793096eddb487ead3~mv2.png" alt="" /></a>
+
+          <a class="partner-logo partner-logo--habitat" href="#projeto-habitat" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_18a525574391456aa40923c447fbe7f1~mv2.png" alt="" /></a>
+
+          <a class="partner-logo partner-logo--galli" href="#projeto-galli" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_73f5505eab56426eb43ed29445448e69~mv2.png" alt="" /></a>
+
+          <a class="partner-logo partner-logo--rede" href="#projeto-rede-transformar" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_2618804240e24ed6bcb4673a1a790093~mv2.png" alt="" /></a>
+          
+          <a class="partner-logo partner-logo--viscofan" href="#projeto-viscofan" aria-hidden="true" tabindex="-1"><img src="https://static.wixstatic.com/media/e39337_154d94180e8d47549ea5ecebd269a17e~mv2.png" alt="" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-list" id="projetos-por-parceiro" aria-label="Projetos por parceiro">
+      <div class="projects-shell">
+        <div class="projects-list__top">
+          <div>
+            <p class="projects-eyebrow">Projetos por parceiro</p>
+            <h2 class="projects-list__title">Escolha uma parceria para conhecer o projeto.</h2>
+          </div>
         </div>
 
-        <!-- Duplique um article.projects-card para adicionar outro projeto -->
-        <div class="projects-rail__scroller" data-projects-scroller>
-          <article class="projects-card" tabindex="0">
-            <div class="projects-card__image" aria-hidden="true">
-              <img
-                src="https://static.wixstatic.com/media/e39337_7c93de9947194c0d8a0ea9f8f360295e~mv2.jpg/v1/fill/w_980,h_586,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e39337_7c93de9947194c0d8a0ea9f8f360295e~mv2.jpg"
-                alt=""
-              />
-            </div>
-            <div class="projects-card__shade" aria-hidden="true"></div>
-            <span class="projects-card__number">01</span>
-            <div class="projects-card__content">
-              <h2 class="projects-card__title">Casas mais seguras para viver melhor.</h2>
-              <div class="projects-card__details">
-                <p>
-                  Reformas essenciais que melhoram salubridade, conforto e seguranca dentro
-                  das moradias, com impacto direto no cotidiano das familias.
-                </p>
-                <a class="projects-card__button" href="https://www.institutocomuta.org.br/solu%C3%A7%C3%B5es" target="_blank" rel="noopener">
-                  Ver projeto
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 17 17 7" />
-                    <path d="M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+        <!--
+          Para trocar as fotos dos projetos por links:
+          substitua o src do img dentro de cada .project-card__image.
+
+          Para trocar as logos por links:
+          substitua o src do img dentro de cada .project-card__partner.
+          As logos dos cards ficam brancas pelo CSS: filter: brightness(0) invert(1).
+        -->
+        <div class="projects-grid">
+          <article class="project-card" id="projeto-gerando-falcoes" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://static.wixstatic.com/media/e39337_0ff1939bf3f3495cbab35bebdfdd0f73~mv2.png" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--gerando"><img src="https://static.wixstatic.com/media/e39337_d2646d290b0648079b93a550fa9a4825~mv2.png" alt="Gerando Falcões" /></div><h3 class="project-card__title">Projetos Gerando Falcões</h3><div class="project-card__details"><p class="project-card__company">Gerando Falcões</p><p class="project-card__text">Frentes de melhoria habitacional conectadas ao fortalecimento de famílias e territórios.</p><a class="project-card__button" href="#projeto-gerando-falcoes">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
-          <article class="projects-card" tabindex="0">
-            <div class="projects-card__image" aria-hidden="true">
-              <img
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85"
-                alt=""
-              />
-            </div>
-            <div class="projects-card__shade" aria-hidden="true"></div>
-            <span class="projects-card__number">02</span>
-            <div class="projects-card__content">
-              <h2 class="projects-card__title">Escuta, dados e prioridade para agir.</h2>
-              <div class="projects-card__details">
-                <p>
-                  Mapeamento das condicoes de habitabilidade para orientar parcerias,
-                  investimentos e solucoes adequadas a cada territorio.
-                </p>
-                <a class="projects-card__button" href="https://www.institutocomuta.org.br/solu%C3%A7%C3%B5es" target="_blank" rel="noopener">
-                  Ver projeto
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 17 17 7" />
-                    <path d="M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+          <article class="project-card" id="projeto-cyrela" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://static.wixstatic.com/media/e39337_0ff1939bf3f3495cbab35bebdfdd0f73~mv2.png" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--cyrela"><img src="https://static.wixstatic.com/media/e39337_8748083cda4043e6a857d0112bd961b7~mv2.png" alt="Cyrela" /></div><h3 class="project-card__title">Projetos Cyrela</h3><div class="project-card__details"><p class="project-card__company">Cyrela</p><p class="project-card__text">Parceria para aproximar recursos, diagnóstico técnico e soluções concretas de moradia.</p><a class="project-card__button" href="#projeto-cyrela">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
-          <article class="projects-card" tabindex="0">
-            <div class="projects-card__image" aria-hidden="true">
-              <img
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85"
-                alt=""
-              />
-            </div>
-            <div class="projects-card__shade" aria-hidden="true"></div>
-            <span class="projects-card__number">03</span>
-            <div class="projects-card__content">
-              <h2 class="projects-card__title">Moradias preparadas para o calor extremo.</h2>
-              <div class="projects-card__details">
-                <p>
-                  Solucoes de conforto termico, ventilacao e protecao da casa para reduzir
-                  riscos e melhorar a qualidade de vida em territorios vulneraveis.
-                </p>
-                <a class="projects-card__button" href="https://www.institutocomuta.org.br/post/casas-quentes-vidas-em-risco-o-calor-como-express%C3%A3o-da-desigualdade-urbana" target="_blank" rel="noopener">
-                  Ver projeto
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 17 17 7" />
-                    <path d="M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+          <article class="project-card" id="projeto-leroy-merlin" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://static.wixstatic.com/media/e39337_0ff1939bf3f3495cbab35bebdfdd0f73~mv2.png" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--leroy"><img src="https://static.wixstatic.com/media/e39337_1c83be39319c4601aee675e40739c2ac~mv2.png" alt="Leroy Merlin" /></div><h3 class="project-card__title">Projetos Leroy Merlin</h3><div class="project-card__details"><p class="project-card__company">Leroy Merlin</p><p class="project-card__text">Apoio a reformas, materiais e soluções para tornar casas mais seguras, salubres e confortáveis.</p><a class="project-card__button" href="#projeto-leroy-merlin">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
-          <article class="projects-card" tabindex="0">
-            <div class="projects-card__image" aria-hidden="true">
-              <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85"
-                alt=""
-              />
-            </div>
-            <div class="projects-card__shade" aria-hidden="true"></div>
-            <span class="projects-card__number">04</span>
-            <div class="projects-card__content">
-              <h2 class="projects-card__title">Parcerias que ampliam impacto local.</h2>
-              <div class="projects-card__details">
-                <p>
-                  Atuacao com comunidades, empresas e organizacoes para transformar recursos
-                  em melhorias concretas para familias e territorios.
-                </p>
-                <a class="projects-card__button" href="https://www.institutocomuta.org.br/contato" target="_blank" rel="noopener">
-                  Ver projeto
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 17 17 7" />
-                    <path d="M8 7h9v9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+          <article class="project-card" id="projeto-votorantim" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--votorantim"><img src="https://static.wixstatic.com/media/e39337_1e5f2750b088491793096eddb487ead3~mv2.png" alt="Votorantim" /></div><h3 class="project-card__title">Projetos Votorantim</h3><div class="project-card__details"><p class="project-card__company">Votorantim</p><p class="project-card__text">Iniciativas com foco em impacto territorial e melhoria das condições de habitabilidade.</p><a class="project-card__button" href="#projeto-votorantim">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+          </article>
+
+          <article class="project-card" id="projeto-habitat" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--habitat"><img src="assets/habitat_semfundo.png" alt="Habitat" /></div><h3 class="project-card__title">Projetos Habitat</h3><div class="project-card__details"><p class="project-card__company">Habitat</p><p class="project-card__text">Ações de moradia digna desenvolvidas com escuta, diagnóstico e presença nos territórios.</p><a class="project-card__button" href="#projeto-habitat">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+          </article>
+
+          <article class="project-card" id="projeto-galli" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--galli"><img src="assets/galli_semfundo.png" alt="Galli" /></div><h3 class="project-card__title">Projetos Galli</h3><div class="project-card__details"><p class="project-card__company">Galli</p><p class="project-card__text">Parceria para ampliar capacidade de execução, articulação local e cuidado com as famílias atendidas.</p><a class="project-card__button" href="#projeto-galli">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+          </article>
+
+          <article class="project-card" id="projeto-rede-transformar" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--rede"><img src="assets/REDETRASNFROMAR_semfundo.png" alt="Rede Transformar" /></div><h3 class="project-card__title">Projetos Rede Transformar</h3><div class="project-card__details"><p class="project-card__company">Rede Transformar</p><p class="project-card__text">Conexões entre organizações, comunidades e recursos para transformar melhorias em impacto real.</p><a class="project-card__button" href="#projeto-rede-transformar">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+          </article>
+
+          <article class="project-card" id="projeto-viscofan" tabindex="0">
+            <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
+            <div class="project-card__shade" aria-hidden="true"></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--viscofan"><img src="assets/viscofan_semfundo.png" alt="Viscofan" /></div><h3 class="project-card__title">Projetos Viscofan</h3><div class="project-card__details"><p class="project-card__company">Viscofan</p><p class="project-card__text">Projeto parceiro voltado a soluções práticas para famílias e territórios em vulnerabilidade habitacional.</p><a class="project-card__button" href="#projeto-viscofan">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
         </div>
       </div>
     </section>
   </main>
-
-  <script>
-    (function () {
-      var scroller = document.querySelector("[data-projects-scroller]");
-      var progress = document.querySelector(".projects-rail__progress");
-
-      function updateProgress() {
-        if (!scroller || !progress) return;
-        var maxScroll = scroller.scrollWidth - scroller.clientWidth;
-        var ratio = maxScroll > 0 ? scroller.scrollLeft / maxScroll : 0;
-        progress.style.transform = "translateX(" + ratio * 300 + "%)";
-      }
-
-      if (!scroller) return;
-
-      document.querySelectorAll("[data-direction]").forEach(function (button) {
-        button.addEventListener("click", function () {
-          var direction = Number(button.getAttribute("data-direction")) || 1;
-          scroller.scrollBy({
-            left: direction * scroller.clientWidth * 0.82,
-            behavior: "smooth"
-          });
-        });
-      });
-
-      scroller.addEventListener("scroll", updateProgress, { passive: true });
-      updateProgress();
-    })();
-  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
