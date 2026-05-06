@@ -29,10 +29,12 @@
          - width/height definem a caixa igual para todas.
          - scale aumenta ou diminui a arte da logo dentro dessa caixa.
          - gap controla a distancia entre a logo e o titulo. */
-      --project-card-logo-width: 186px;
-      --project-card-logo-height: 62px;
-      --project-card-logo-scale: 1.72;
-      --project-card-logo-gap: 24px;
+      --project-card-logo-width: 30px;
+      --project-card-logo-height: 30px;
+      --project-card-logo-bottom: 50px 0;
+      --project-card-logo-scale: 4.8;
+      --project-card-logo-gap: 20px;
+      
     }
 
     * { box-sizing: border-box; }
@@ -338,40 +340,31 @@
       will-change: transform;
     }
 
-    /* Logo branca do parceiro: posicao unica em todos os cards */
+    /* Logo branca do parceiro: fica travada no mesmo ponto do card, sem depender do titulo. */
     .project-card__partner {
+      position: absolute;
+      left: 0;
       width: var(--project-card-logo-width);
       height: var(--project-card-logo-height);
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
-      margin: 0 0 var(--project-card-logo-gap);
+      margin: 1% -3%;
       padding: 0;
       background: transparent;
-      overflow: visible;
       pointer-events: none;
     }
 
     .project-card__partner img {
       display: block;
-      width: var(--project-card-logo-width);
-      height: var(--project-card-logo-height);
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       object-position: left bottom;
       filter: brightness(0) saturate(100%) invert(1) grayscale(1) contrast(1.85);
       transform: scale(var(--project-card-logo-scale));
       transform-origin: left bottom;
     }
-
-    /* Ajustes finos por logo: use apenas se algum PNG vier com muito espaco transparente interno. */
-    .project-card__partner--gerando { --project-card-logo-scale: 2.18; }
-    .project-card__partner--cyrela { --project-card-logo-scale: 1.88; }
-    .project-card__partner--leroy { --project-card-logo-scale: 1.72; }
-    .project-card__partner--votorantim { --project-card-logo-scale: 1.78; }
-    .project-card__partner--habitat { --project-card-logo-scale: 1.7; }
-    .project-card__partner--galli { --project-card-logo-scale: 1.62; }
-    .project-card__partner--rede { --project-card-logo-scale: 1.68; }
-    .project-card__partner--viscofan { --project-card-logo-scale: 1.72; }
 
     .project-card__title {
       max-width: 430px;
@@ -559,9 +552,10 @@
       }
 
       .project-card__partner {
+        bottom: 188px;
         width: var(--project-card-logo-width);
         height: var(--project-card-logo-height);
-        margin-bottom: var(--project-card-logo-gap);
+        --project-card-logo-scale: 3.15;
       }
 
       .project-card__title {
@@ -698,49 +692,49 @@
           <article class="project-card" id="projeto-gerando-falcoes" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://static.wixstatic.com/media/e39337_0ff1939bf3f3495cbab35bebdfdd0f73~mv2.png" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--gerando"><img src="https://static.wixstatic.com/media/e39337_d2646d290b0648079b93a550fa9a4825~mv2.png" alt="Gerando Falcões" /></div><h3 class="project-card__title">Projetos Gerando Falcões</h3><div class="project-card__details"><p class="project-card__company">Gerando Falcões</p><p class="project-card__text">Frentes de melhoria habitacional conectadas ao fortalecimento de famílias e territórios.</p><a class="project-card__button" href="#projeto-gerando-falcoes">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--gerando"><img src="https://static.wixstatic.com/media/e39337_c984783cc4364254b24e21bb1429c181~mv2.png" alt="Gerando Falcões" /></div><h3 class="project-card__title">Projetos Gerando Falcões</h3><div class="project-card__details"><p class="project-card__company">Gerando Falcões</p><p class="project-card__text">Frentes de melhoria habitacional conectadas ao fortalecimento de famílias e territórios.</p><a class="project-card__button" href="#projeto-gerando-falcoes">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-cyrela" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://static.wixstatic.com/media/e39337_0ff1939bf3f3495cbab35bebdfdd0f73~mv2.png" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--cyrela"><img src="https://static.wixstatic.com/media/e39337_8748083cda4043e6a857d0112bd961b7~mv2.png" alt="Cyrela" /></div><h3 class="project-card__title">Projetos Cyrela</h3><div class="project-card__details"><p class="project-card__company">Cyrela</p><p class="project-card__text">Parceria para aproximar recursos, diagnóstico técnico e soluções concretas de moradia.</p><a class="project-card__button" href="#projeto-cyrela">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--cyrela"><img src="https://static.wixstatic.com/media/e39337_57ce38ab9ee74b8fada7f5c12cd4f1ef~mv2.png" alt="Cyrela" /></div><h3 class="project-card__title">Projetos Cyrela</h3><div class="project-card__details"><p class="project-card__company">Cyrela</p><p class="project-card__text">Parceria para aproximar recursos, diagnóstico técnico e soluções concretas de moradia.</p><a class="project-card__button" href="#projeto-cyrela">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-leroy-merlin" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://static.wixstatic.com/media/e39337_0ff1939bf3f3495cbab35bebdfdd0f73~mv2.png" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--leroy"><img src="https://static.wixstatic.com/media/e39337_1c83be39319c4601aee675e40739c2ac~mv2.png" alt="Leroy Merlin" /></div><h3 class="project-card__title">Projetos Leroy Merlin</h3><div class="project-card__details"><p class="project-card__company">Leroy Merlin</p><p class="project-card__text">Apoio a reformas, materiais e soluções para tornar casas mais seguras, salubres e confortáveis.</p><a class="project-card__button" href="#projeto-leroy-merlin">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--leroy"><img src="https://static.wixstatic.com/media/e39337_7e5e0eea5af84d159c060a41a9cc7853~mv2.png" alt="Leroy Merlin" /></div><h3 class="project-card__title">Projetos Leroy Merlin</h3><div class="project-card__details"><p class="project-card__company">Leroy Merlin</p><p class="project-card__text">Apoio a reformas, materiais e soluções para tornar casas mais seguras, salubres e confortáveis.</p><a class="project-card__button" href="#projeto-leroy-merlin">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-votorantim" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--votorantim"><img src="https://static.wixstatic.com/media/e39337_1e5f2750b088491793096eddb487ead3~mv2.png" alt="Votorantim" /></div><h3 class="project-card__title">Projetos Votorantim</h3><div class="project-card__details"><p class="project-card__company">Votorantim</p><p class="project-card__text">Iniciativas com foco em impacto territorial e melhoria das condições de habitabilidade.</p><a class="project-card__button" href="#projeto-votorantim">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--votorantim"><img src="https://static.wixstatic.com/media/e39337_eebca73d642b42adbd11c6c0ee3ee18d~mv2.png" alt="Votorantim" /></div><h3 class="project-card__title">Projetos Votorantim</h3><div class="project-card__details"><p class="project-card__company">Votorantim</p><p class="project-card__text">Iniciativas com foco em impacto territorial e melhoria das condições de habitabilidade.</p><a class="project-card__button" href="#projeto-votorantim">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-habitat" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--habitat"><img src="assets/habitat_semfundo.png" alt="Habitat" /></div><h3 class="project-card__title">Projetos Habitat</h3><div class="project-card__details"><p class="project-card__company">Habitat</p><p class="project-card__text">Ações de moradia digna desenvolvidas com escuta, diagnóstico e presença nos territórios.</p><a class="project-card__button" href="#projeto-habitat">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--habitat"><img src="https://static.wixstatic.com/media/e39337_dc8f86f790104703b8372879e336655f~mv2.png" alt="Habitat" /></div><h3 class="project-card__title">Projetos Habitat</h3><div class="project-card__details"><p class="project-card__company">Habitat</p><p class="project-card__text">Ações de moradia digna desenvolvidas com escuta, diagnóstico e presença nos territórios.</p><a class="project-card__button" href="#projeto-habitat">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-galli" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--galli"><img src="assets/galli_semfundo.png" alt="Galli" /></div><h3 class="project-card__title">Projetos Galli</h3><div class="project-card__details"><p class="project-card__company">Galli</p><p class="project-card__text">Parceria para ampliar capacidade de execução, articulação local e cuidado com as famílias atendidas.</p><a class="project-card__button" href="#projeto-galli">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--galli"><img src="https://static.wixstatic.com/media/e39337_d70fd358819c4722b7abf5796ee58ddb~mv2.png" alt="Galli" /></div><h3 class="project-card__title">Projetos Galli</h3><div class="project-card__details"><p class="project-card__company">Galli</p><p class="project-card__text">Parceria para ampliar capacidade de execução, articulação local e cuidado com as famílias atendidas.</p><a class="project-card__button" href="#projeto-galli">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-rede-transformar" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--rede"><img src="assets/REDETRASNFROMAR_semfundo.png" alt="Rede Transformar" /></div><h3 class="project-card__title">Projetos Rede Transformar</h3><div class="project-card__details"><p class="project-card__company">Rede Transformar</p><p class="project-card__text">Conexões entre organizações, comunidades e recursos para transformar melhorias em impacto real.</p><a class="project-card__button" href="#projeto-rede-transformar">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--rede"><img src="https://static.wixstatic.com/media/e39337_d6ec46111d6244d5ab26a0443c33d162~mv2.png" alt="Rede Transformar" /></div><h3 class="project-card__title">Projetos Rede Transformar</h3><div class="project-card__details"><p class="project-card__company">Rede Transformar</p><p class="project-card__text">Conexões entre organizações, comunidades e recursos para transformar melhorias em impacto real.</p><a class="project-card__button" href="#projeto-rede-transformar">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
 
           <article class="project-card" id="projeto-viscofan" tabindex="0">
             <div class="project-card__image" aria-hidden="true"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="" /></div>
             <div class="project-card__shade" aria-hidden="true"></div>
-            <div class="project-card__content"><div class="project-card__partner project-card__partner--viscofan"><img src="assets/viscofan_semfundo.png" alt="Viscofan" /></div><h3 class="project-card__title">Projetos Viscofan</h3><div class="project-card__details"><p class="project-card__company">Viscofan</p><p class="project-card__text">Projeto parceiro voltado a soluções práticas para famílias e territórios em vulnerabilidade habitacional.</p><a class="project-card__button" href="#projeto-viscofan">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
+            <div class="project-card__content"><div class="project-card__partner project-card__partner--viscofan"><img src="https://static.wixstatic.com/media/e39337_1dc7d00ea3bf4c2b85dba08ec2378c81~mv2.png" alt="Viscofan" /></div><h3 class="project-card__title">Projetos Viscofan</h3><div class="project-card__details"><p class="project-card__company">Viscofan</p><p class="project-card__text">Projeto parceiro voltado a soluções práticas para famílias e territórios em vulnerabilidade habitacional.</p><a class="project-card__button" href="#projeto-viscofan">Ver projeto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></a></div></div>
           </article>
         </div>
       </div>
@@ -748,6 +742,17 @@
   </main>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
